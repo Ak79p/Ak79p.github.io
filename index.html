@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amit Kurmoli — SDET / QA Automation Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Spline+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#eef1ea;
+    --paper-soft:#f4f6f0;
+    --ink:#22271f;
+    --ink-soft:#4c5447;
+    --ink-faint:#838b7c;
+    --line:#d4d9cb;
+    --card:#f6f8f2;
+    --shadow:0 1px 2px rgba(34,39,31,.04),0 8px 24px rgba(34,39,31,.06);
+    --shadow-hover:0 2px 6px rgba(34,39,31,.07),0 16px 40px rgba(34,39,31,.11);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Spline Sans',-apple-system,sans-serif;
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--ink);color:var(--paper);}
+
+  .wrap{max-width:720px;margin:0 auto;padding:0 32px;}
+
+  /* ---- nav ---- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(238,241,234,.82);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease;
+  }
+  nav.scrolled{border-bottom-color:var(--line);}
+  .nav-inner{
+    max-width:720px;margin:0 auto;padding:18px 32px;
+    display:flex;justify-content:space-between;align-items:baseline;
+  }
+  .nav-name{font-family:'Newsreader',serif;font-size:18px;font-weight:500;letter-spacing:.01em;}
+  .nav-links{display:flex;gap:26px;}
+  .nav-links a{
+    color:var(--ink-soft);text-decoration:none;font-size:14px;
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{color:var(--ink);}
+  @media(max-width:560px){.nav-links{display:none;}}
+
+  /* ---- reveal ---- */
+  .reveal{
+    opacity:0;transform:translateY(18px);
+    transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1);
+  }
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---- hero ---- */
+  header{padding:120px 0 96px;}
+  .eyebrow{
+    font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:30px;
+  }
+  h1{
+    font-family:'Newsreader',serif;
+    font-weight:400;
+    font-size:43px;
+    line-height:1.28;
+    letter-spacing:-.012em;
+    margin-bottom:34px;
+  }
+  h1 em{font-style:italic;}
+  .hero-sub{
+    font-size:18px;color:var(--ink-soft);max-width:560px;
+  }
+  .hero-sub strong{font-weight:600;color:var(--ink);}
+
+  /* ---- section scaffolding ---- */
+  section{padding:64px 0;}
+  .section-label{
+    font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:38px;
+    padding-bottom:14px;border-bottom:1px solid var(--line);
+  }
+
+  /* ---- about ---- */
+  .about p{font-size:18px;color:var(--ink-soft);margin-bottom:20px;}
+  .about p:last-child{margin-bottom:0;}
+  .about strong{color:var(--ink);font-weight:600;}
+
+  /* ---- featured project ---- */
+  .featured{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    padding:40px;
+    margin-bottom:26px;
+    transition:box-shadow .35s ease,transform .35s ease;
+  }
+  .featured:hover{box-shadow:var(--shadow-hover);transform:translateY(-3px);}
+  .feat-tag{
+    display:inline-block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-faint);border:1px solid var(--line);
+    border-radius:100px;padding:4px 12px;margin-bottom:20px;
+  }
+  .feat-title{
+    font-family:'Newsreader',serif;font-size:29px;font-weight:500;
+    line-height:1.25;margin-bottom:6px;
+  }
+  .feat-role{font-size:14px;color:var(--ink-faint);margin-bottom:20px;}
+  .featured p{font-size:16px;color:var(--ink-soft);margin-bottom:18px;}
+  .featured ul{list-style:none;margin-bottom:22px;}
+  .featured li{
+    font-size:15px;color:var(--ink-soft);
+    padding-left:20px;position:relative;margin-bottom:10px;line-height:1.6;
+  }
+  .featured li::before{
+    content:"";position:absolute;left:0;top:11px;
+    width:5px;height:5px;border-radius:50%;background:var(--ink-faint);
+  }
+  .featured li strong{color:var(--ink);font-weight:600;}
+  .stack{
+    display:flex;flex-wrap:wrap;gap:8px;
+    padding-top:20px;border-top:1px solid var(--line);
+  }
+  .chip{
+    font-size:13px;color:var(--ink-soft);
+    background:var(--paper-soft);border:1px solid var(--line);
+    border-radius:6px;padding:4px 10px;
+  }
+  .links-row{margin-top:20px;display:flex;gap:22px;flex-wrap:wrap;}
+  .links-row a{
+    font-size:14px;color:var(--ink);text-decoration:none;
+    border-bottom:1px solid var(--ink);padding-bottom:1px;
+    transition:opacity .2s ease;
+  }
+  .links-row a:hover{opacity:.55;}
+  .note{font-size:14px;color:var(--ink-faint);font-style:italic;margin-top:18px;}
+
+  /* ---- uniform project cards ---- */
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    padding:30px 32px;
+    margin-bottom:18px;
+    transition:box-shadow .35s ease,transform .35s ease;
+  }
+  .card:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px);}
+  .card-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;}
+  .card-title{
+    font-family:'Newsreader',serif;font-size:21px;font-weight:500;line-height:1.3;
+  }
+  .card-year{font-size:13px;color:var(--ink-faint);white-space:nowrap;}
+  .card-role{font-size:13px;color:var(--ink-faint);margin:4px 0 14px;}
+  .card p{font-size:15px;color:var(--ink-soft);margin-bottom:14px;}
+  .card .stack{padding-top:14px;}
+  .card .chip{font-size:12px;padding:3px 9px;}
+
+  /* ---- experience ---- */
+  .xp-item{padding:22px 0;border-bottom:1px solid var(--line);}
+  .xp-item:last-child{border-bottom:none;}
+  .xp-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;}
+  .xp-role{font-family:'Newsreader',serif;font-size:20px;font-weight:500;}
+  .xp-org{font-size:15px;color:var(--ink-soft);}
+  .xp-year{font-size:13px;color:var(--ink-faint);white-space:nowrap;}
+  .xp-item p{font-size:15px;color:var(--ink-soft);margin-top:8px;}
+
+  /* ---- skills ---- */
+  .skill-group{margin-bottom:24px;}
+  .skill-group:last-child{margin-bottom:0;}
+  .skill-cat{
+    font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:12px;
+  }
+  .skill-row{display:flex;flex-wrap:wrap;gap:8px;}
+
+  /* ---- education ---- */
+  .edu-item{
+    display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    padding:16px 0;border-bottom:1px solid var(--line);
+  }
+  .edu-item:last-child{border-bottom:none;}
+  .edu-deg{font-size:16px;color:var(--ink);}
+  .edu-deg span{display:block;font-size:14px;color:var(--ink-faint);margin-top:2px;}
+  .edu-year{font-size:13px;color:var(--ink-faint);white-space:nowrap;}
+
+  /* ---- contact ---- */
+  .contact{padding:80px 0 110px;text-align:center;}
+  .contact h2{
+    font-family:'Newsreader',serif;font-weight:400;font-size:32px;
+    margin-bottom:20px;letter-spacing:-.01em;
+  }
+  .contact p{color:var(--ink-soft);max-width:440px;margin:0 auto 30px;}
+  .contact-links{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;}
+  .contact-links a{
+    font-size:15px;color:var(--ink);text-decoration:none;
+    border-bottom:1px solid var(--ink);padding-bottom:2px;
+    transition:opacity .2s ease;
+  }
+  .contact-links a:hover{opacity:.55;}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:30px 0;text-align:center;
+    font-size:13px;color:var(--ink-faint);
+  }
+
+  @media(max-width:560px){
+    body{font-size:16px;}
+    .wrap{padding:0 22px;}
+    .nav-inner{padding:16px 22px;}
+    header{padding:84px 0 64px;}
+    h1{font-size:32px;}
+    .featured{padding:28px 24px;}
+    .card{padding:24px 22px;}
+    section{padding:48px 0;}
+    .card-head,.xp-head{flex-direction:column;gap:2px;}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <span class="nav-name">Amit Kurmoli</span>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <a href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow reveal">SDET · QA Automation Engineer</div>
+    <h1 class="reveal">Quality isn't a phase I run at the end — it's how I think about building software. I design test systems with one consistent shape across every kind of test that matters.</h1>
+    <p class="hero-sub reveal">I design test frameworks that don't just catch bugs, but explain them. <strong>Python, Playwright, API &amp; performance testing</strong> — with a machine-learning background that shapes how I think about systems, data, and reliability.</p>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="section-label reveal">About</div>
+    <p class="reveal">I'm a quality engineer with around five years of hands-on QA experience across web, desktop, and mobile applications — building automation frameworks, integrating them with CI so developers get fast feedback, and testing across the UI, API, and data layers.</p>
+    <p class="reveal">My path here wasn't a straight line. I started in <strong>electronics and power electronics engineering</strong>, moved into <strong>software quality</strong>, and most recently completed a <strong>Master's in Information Science with a machine-learning emphasis</strong>. Each step was really about the same instinct: making things work reliably, and understanding them well enough to know when they don't.</p>
+    <p class="reveal">That combination — QA engineering depth plus a research background in machine learning — is where I do my most distinctive work: thinking carefully about systems, the data they produce, and how to test both reliably.</p>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-label reveal">Featured Work</div>
+
+    <!-- Anton -->
+    <div class="featured reveal">
+      <span class="feat-tag">Independent Project</span>
+      <div class="feat-title">Anton — A Test Automation Framework with One Shape for Every Engine</div>
+      <div class="feat-role">Designer &amp; sole engineer</div>
+      <p>A test automation framework with four engines — API, UI, performance, and chaos — built against Vendure, an open-source GraphQL e-commerce platform. Every engine implements the same three-method interface — <em>prepare → execute → collect artifacts</em> — so the orchestration layer, fixtures, and reporting are shared across all test types. Adding a new kind of test means implementing those three methods; nothing else has to change.</p>
+      <ul>
+        <li><strong>Four engines, one interface</strong> — API tests in pytest over a GraphQL client, UI tests in Playwright with Page Object Model, performance via k6 wrapped as a subprocess, and chaos via Toxiproxy injecting real network faults. The base interface enforces the order; the engines don't know about each other.</li>
+        <li><strong>Chaos with real faults, not mocked responses</strong> — Toxiproxy injects latency and connection-level failures into the live system, so the tests verify how the application actually behaves under network stress rather than how its error-handling code looks in isolation.</li>
+        <li><strong>Deliberate fixture scoping</strong> — session-scoped shared clients for read-heavy paths, function-scoped customers for checkout tests so state never leaks between cases. No hardcoded IDs; checkout discovers shipping and payment methods at runtime, so the suite works against any Vendure instance.</li>
+        <li><strong>End-to-end pipeline</strong> — a pytest plugin records every run to SQLite, a FastAPI + React dashboard reads from that database, and GitHub Actions runs all 44 tests on every push with reports uploaded as downloadable artifacts.</li>
+      </ul>
+      <div class="stack">
+        <span class="chip">Python</span><span class="chip">pytest</span><span class="chip">Playwright</span>
+        <span class="chip">GraphQL</span><span class="chip">k6</span>
+        <span class="chip">Toxiproxy</span><span class="chip">FastAPI</span>
+        <span class="chip">React</span><span class="chip">SQLite</span>
+        <span class="chip">Docker Compose</span><span class="chip">GitHub Actions</span>
+        <span class="chip">Vendure (SUT)</span>
+      </div>
+      <div class="links-row">
+        <a href="https://github.com/Ak79p/anton" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+    </div>
+
+    <!-- ASL-TRM -->
+    <div class="featured reveal">
+      <span class="feat-tag">Capstone Research · M.S.</span>
+      <div class="feat-title">ASL-TRM — A Transformer Reasoning Model for ASL Gesture Recognition</div>
+      <div class="feat-role">Data pipeline owner · model development contributor — 3-person team</div>
+      <p>A capstone research project building a lightweight Transformer-based system for American Sign Language gesture recognition. The system processes ASL video, extracts spatial–temporal pose and motion features, and applies a custom compact architecture — TRM-Micro — to translate signed gestures into text.</p>
+      <ul>
+        <li><strong>Owned the end-to-end data pipeline</strong> — from gathering and preparing the ASL video datasets, through MediaPipe-based feature extraction, to data ingestion feeding the model for training and evaluation.</li>
+        <li><strong>Contributed to model development</strong> — assisted in building TRM-Micro, which adapts recursive-reasoning principles from recent Transformer research to the spatio-temporal domain of sign language.</li>
+        <li><strong>Benchmarking</strong> — TRM-Micro v3 matched or exceeded the ST-GCN baseline on the ASL-Citizen dataset (Top-1: 61.46% vs 59.52%) at roughly one-fifth the parameter count, establishing a strong accuracy-to-efficiency trade-off.</li>
+        <li><strong>Ongoing</strong> — preparing the work for publication and extending toward continuous, sentence-level ASL recognition.</li>
+      </ul>
+      <div class="stack">
+        <span class="chip">Python</span><span class="chip">TensorFlow</span>
+        <span class="chip">Transformer architectures</span><span class="chip">MediaPipe Holistic</span>
+        <span class="chip">Streamlit</span>
+      </div>
+      <p class="note">Repository kept private pending publication of the research paper.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-label reveal">Selected Projects</div>
+
+    <!-- Pepper Square framework -->
+    <div class="card reveal">
+      <div class="card-head">
+        <span class="card-title">Test Operations &amp; Automation Framework</span>
+        <span class="card-year">Pepper Square</span>
+      </div>
+      <div class="card-role">Led testing operations · designed standards and tooling</div>
+      <p>Established the quality assurance function as the agency expanded from a design-focused practice into software development. Designed the testing operations and standards, and built a reusable automation framework supporting websites, web applications, and mobile applications.</p>
+      <p>Built the framework deliberately right-sized — scaled and integrated with CI so developers got fast feedback, with unit and end-to-end tests cleanly separated — and kept engineering effort balanced against real, meaningful test coverage rather than over-investing in tooling for its own sake.</p>
+      <div class="stack">
+        <span class="chip">Java</span><span class="chip">Selenium</span>
+        <span class="chip">CI integration</span><span class="chip">Test architecture</span>
+      </div>
+    </div>
+
+    <!-- Fitness app (anonymized) -->
+    <div class="card reveal">
+      <div class="card-head">
+        <span class="card-title">Cross-Platform Fitness App Revamp</span>
+        <span class="card-year">Pepper Square · client</span>
+      </div>
+      <div class="card-role">Head of testing operations — health &amp; fitness sector</div>
+      <p>Led quality assurance for the ground-up revamp of a React Native mobile application (iOS and Android) for a fitness organization. Performed and led manual functional testing, Appium UI automation, API testing with REST Assured, and SQL-based database testing — validating the app end to end across the UI, service, and data layers.</p>
+      <p>Also contributed beyond QA: collaborated with the design team on user-flow and journey mapping, worked on features including an in-app checkout flow and health-monitor integration with iOS and Android health platforms, and helped design the backend content management system.</p>
+      <div class="stack">
+        <span class="chip">React Native</span><span class="chip">Appium</span>
+        <span class="chip">REST Assured</span><span class="chip">SQL</span>
+        <span class="chip">k6</span><span class="chip">iOS &amp; Android</span>
+      </div>
+      <p class="note">Client name available on request.</p>
+    </div>
+
+    <!-- Olive Garden (anonymized, minimal) -->
+    <div class="card reveal">
+      <div class="card-head">
+        <span class="card-title">Mobile Web Revamp — National Restaurant Brand</span>
+        <span class="card-year">Pepper Square · client</span>
+      </div>
+      <div class="card-role">UI testing contributor</div>
+      <p>Contributed UI testing to the revamp of a major national restaurant brand's mobile web experience — verifying layout, responsiveness, and visual consistency across the redesigned customer-facing site.</p>
+      <p class="note">Short-term engagement · client name available on request.</p>
+    </div>
+
+    <!-- Sharp: Cocoro Shared Folder -->
+    <div class="card reveal">
+      <div class="card-head">
+        <span class="card-title">COCORO OFFICE Shared Folder</span>
+        <span class="card-year">Sharp</span>
+      </div>
+      <div class="card-role">QA — cloud storage &amp; document-sharing service</div>
+      <p>Quality assurance for a cloud storage service with organization-wide shared folders, access control, and secure external file sharing. Performed manual functional testing of file-sharing workflows — upload, download, permission enforcement, and secure share links — and built automated web-portal regression tests in Java with Selenium, working within an established enterprise test framework.</p>
+      <div class="stack">
+        <span class="chip">Java</span><span class="chip">Selenium</span>
+        <span class="chip">TestNG / JUnit</span><span class="chip">Manual testing</span>
+      </div>
+    </div>
+
+    <!-- Sharp: Sharpdesk Mobile -->
+    <div class="card reveal">
+      <div class="card-head">
+        <span class="card-title">Sharpdesk Mobile</span>
+        <span class="card-year">Sharp</span>
+      </div>
+      <div class="card-role">QA — cross-platform mobile printing &amp; scanning app</div>
+      <p>Quality assurance for a cross-platform app connecting smartphones and tablets to Sharp multifunction printers over wireless LAN. Performed manual functional testing of print, scan, and file-sharing workflows across both iOS and Android, and built automated UI tests in Java using Appium, covering variation in devices, screen sizes, and OS versions.</p>
+      <div class="stack">
+        <span class="chip">Java</span><span class="chip">Appium</span>
+        <span class="chip">iOS &amp; Android</span><span class="chip">Manual testing</span>
+      </div>
+    </div>
+
+    <!-- Sharp: Sharpdesk Desktop -->
+    <div class="card reveal">
+      <div class="card-head">
+        <span class="card-title">Sharpdesk Desktop</span>
+        <span class="card-year">Sharp</span>
+      </div>
+      <div class="card-role">QA — Windows document-management application</div>
+      <p>Quality assurance for an integrated Windows desktop application for document and image management, including its bundled Network Scanner Tool and Composer components. Performed manual functional testing across document, scanning, OCR, and annotation workflows, and built automated UI regression tests in Java using Winium, a WebDriver-based tool for Windows desktop automation.</p>
+      <div class="stack">
+        <span class="chip">Java</span><span class="chip">Winium</span>
+        <span class="chip">Desktop UI automation</span><span class="chip">Manual testing</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-label reveal">Experience</div>
+    <div class="xp-item reveal">
+      <div class="xp-head">
+        <div><span class="xp-role">Quality Engineer</span> &nbsp;<span class="xp-org">Pepper Square</span></div>
+        <span class="xp-year">2022 — 2024</span>
+      </div>
+      <p>Led testing operations on the agency's move into software development — designing the QA process, standards, and a reusable automation framework, and owning quality across UI, API, database, and load testing.</p>
+    </div>
+    <div class="xp-item reveal">
+      <div class="xp-head">
+        <div><span class="xp-role">Member Technical Staff — Quality</span> &nbsp;<span class="xp-org">Sharp</span></div>
+        <span class="xp-year">2019 — 2022</span>
+      </div>
+      <p>Quality assurance across Sharp's document-solutions products — web, Windows desktop, and mobile — building automated tests with the Selenium / Winium / Appium WebDriver family in Java alongside structured manual testing.</p>
+    </div>
+    <div class="xp-item reveal">
+      <div class="xp-head">
+        <div><span class="xp-role">Engineering Intern</span> &nbsp;<span class="xp-org">Bosch Rexroth</span></div>
+        <span class="xp-year">2018 — 2019</span>
+      </div>
+      <p>Early engineering experience following a Master's in power electronics.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-label reveal">Skills</div>
+    <div class="skill-group reveal">
+      <div class="skill-cat">Test Automation</div>
+      <div class="skill-row">
+        <span class="chip">Python</span><span class="chip">Playwright</span><span class="chip">pytest</span>
+        <span class="chip">Selenium</span><span class="chip">Appium</span><span class="chip">Winium</span>
+        <span class="chip">Java</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-cat">API &amp; Performance</div>
+      <div class="skill-row">
+        <span class="chip">httpx</span><span class="chip">requests</span>
+        <span class="chip">REST Assured</span><span class="chip">GraphQL</span>
+        <span class="chip">k6</span><span class="chip">Load &amp; chaos testing</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-cat">Infrastructure &amp; Tooling</div>
+      <div class="skill-row">
+        <span class="chip">Docker</span><span class="chip">GitHub Actions</span>
+        <span class="chip">Jenkins</span><span class="chip">CI/CD pipelines</span>
+        <span class="chip">SQL</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-cat">Machine Learning</div>
+      <div class="skill-row">
+        <span class="chip">TensorFlow</span><span class="chip">Transformer architectures</span>
+        <span class="chip">Data pipelines</span><span class="chip">MediaPipe</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-label reveal">Education</div>
+    <div class="edu-item reveal">
+      <div class="edu-deg">M.S. Information Science <span>Machine Learning emphasis · University of Arizona</span></div>
+      <span class="edu-year">2024 — 2026</span>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-deg">M.Tech Power Electronics</div>
+      <span class="edu-year">2016 — 2018</span>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-deg">B.E. Electronics &amp; Electrical Engineering</div>
+      <span class="edu-year">2012 — 2016</span>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="reveal">Let's talk quality.</h2>
+    <p class="reveal">Open to SDET and QA automation roles — remote, India or global. If your team cares about test systems that are thoughtfully built, I'd like to hear from you.</p>
+    <div class="contact-links reveal">
+      <a href="mailto:amitkurmoli79@gmail.com">amitkurmoli79@gmail.com</a>
+      <a href="https://www.linkedin.com/in/amit-kurmoli/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Ak79p/" target="_blank" rel="noopener">GitHub</a>
+      <a href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Amit Kurmoli · Built as a single hand-written HTML file</div>
+</footer>
+
+<script>
+  // nav border on scroll
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled',window.scrollY>10);
+  },{passive:true});
+
+  // staggered reveal on scroll
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){
+        const items=e.target.parentElement
+          ? [...e.target.parentElement.querySelectorAll('.reveal')].filter(x=>!x.classList.contains('in'))
+          : [e.target];
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    io.observe(el);
+  });
+
+  // gentle stagger: delay reveals that share a section
+  document.querySelectorAll('section, header').forEach(sec=>{
+    const items=sec.querySelectorAll('.reveal');
+    items.forEach((el,i)=>{
+      el.style.transitionDelay=(Math.min(i,6)*0.07)+'s';
+    });
+  });
+</script>
+
+</body>
+</html>
