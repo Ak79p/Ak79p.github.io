@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Experience — Amit Kurmoli</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Spline+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#eef1ea; --paper-soft:#f4f6f0; --ink:#22271f;
+    --ink-soft:#4c5447; --ink-faint:#838b7c; --line:#d4d9cb; --card:#f6f8f2;
+    --shadow:0 1px 2px rgba(34,39,31,.04),0 8px 24px rgba(34,39,31,.06);
+    --shadow-hover:0 2px 6px rgba(34,39,31,.07),0 16px 40px rgba(34,39,31,.11);
+  }
+  html[data-theme="dark"]{
+    --paper:#1b1f1a; --paper-soft:#232821; --ink:#e8ece3;
+    --ink-soft:#b3bba9; --ink-faint:#7e8775; --line:#363c30; --card:#232821;
+    --shadow:0 1px 2px rgba(0,0,0,.2),0 8px 24px rgba(0,0,0,.3);
+    --shadow-hover:0 2px 6px rgba(0,0,0,.25),0 16px 40px rgba(0,0,0,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Spline Sans',-apple-system,sans-serif;
+    font-size:17px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    transition:background .5s ease,color .5s ease;
+  }
+  ::selection{background:var(--ink);color:var(--paper);}
+
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--paper) 82%,transparent);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid transparent;transition:border-color .3s ease,background .5s ease;
+  }
+  nav.scrolled{border-bottom-color:var(--line);}
+  .nav-inner{
+    max-width:1100px;margin:0 auto;padding:18px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .nav-name{font-family:'Newsreader',serif;font-size:18px;font-weight:500;text-decoration:none;color:var(--ink);}
+  .nav-right{display:flex;align-items:center;gap:26px;}
+  .nav-links{display:flex;gap:26px;}
+  .nav-links a{color:var(--ink-soft);text-decoration:none;font-size:14px;transition:color .2s ease;white-space:nowrap;}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink);}
+  .bulb{background:none;border:none;cursor:pointer;padding:4px;line-height:0;color:var(--ink-faint);transition:color .3s ease,transform .3s ease;}
+  .bulb:hover{color:var(--ink);transform:scale(1.1);}
+  .bulb svg{width:20px;height:20px;display:block;}
+  .bulb .rays{transition:opacity .3s ease;}
+  html[data-theme="dark"] .bulb .rays{opacity:0;}
+  .nav-name{white-space:nowrap;}
+  @media(max-width:560px){.nav-inner{padding:14px 16px;flex-wrap:wrap;gap:10px;}.nav-right{gap:14px;}.nav-links{gap:14px;}.nav-links a{font-size:13px;}.nav-name{font-size:16px;}}
+
+  /* layout: left section-nav + content */
+  .layout{max-width:1100px;margin:0 auto;padding:60px 40px 0;display:flex;gap:56px;align-items:flex-start;}
+  .sidenav{
+    position:sticky;top:90px;flex:0 0 160px;
+    display:flex;flex-direction:column;gap:4px;
+  }
+  .sidenav a{
+    font-size:14px;color:var(--ink-faint);text-decoration:none;
+    padding:8px 0 8px 16px;border-left:2px solid var(--line);
+    transition:color .2s ease,border-color .2s ease;
+  }
+  .sidenav a:hover{color:var(--ink-soft);}
+  .sidenav a.active{color:var(--ink);border-left-color:var(--ink);font-weight:500;}
+  .content{flex:1 1 auto;min-width:0;max-width:760px;}
+
+  @media(max-width:820px){
+    .layout{flex-direction:column;gap:0;padding:0 22px;}
+    .sidenav{display:none;}
+    .content{padding-top:10px;max-width:100%;}
+  }
+
+  /* sections */
+  .sect{padding:24px 0 56px;scroll-margin-top:90px;}
+  .sect-title{
+    font-family:'Newsreader',serif;font-weight:400;font-size:28px;
+    margin-bottom:8px;letter-spacing:-.01em;
+  }
+  .sect-intro{color:var(--ink-soft);font-size:16px;margin-bottom:30px;max-width:560px;}
+
+  /* skills */
+  .skill-group{margin-bottom:22px;}
+  .skill-cat{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;}
+  .skill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{font-size:13px;color:var(--ink-soft);background:var(--paper-soft);border:1px solid var(--line);border-radius:6px;padding:5px 11px;transition:background .5s ease,border-color .5s ease;}
+
+  /* featured */
+  .featured{padding:28px 0;border-top:1px solid var(--line);scroll-margin-top:90px;}
+  .featured:first-of-type{border-top:none;}
+  .feat-tag{display:inline-block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line);border-radius:100px;padding:4px 12px;margin-bottom:14px;}
+  .feat-title{font-family:'Newsreader',serif;font-size:21px;font-weight:500;line-height:1.3;margin-bottom:4px;}
+  .feat-role{font-size:13px;color:var(--ink-faint);margin-bottom:14px;}
+  .featured p{font-size:15px;color:var(--ink-soft);margin-bottom:14px;}
+  .featured ul{list-style:none;margin-bottom:16px;}
+  .featured li{font-size:14px;color:var(--ink-soft);padding-left:18px;position:relative;margin-bottom:9px;line-height:1.6;}
+  .featured li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--ink-faint);}
+  .featured li strong{color:var(--ink);font-weight:600;}
+  .stack{display:flex;flex-wrap:wrap;gap:8px;padding-top:6px;}
+  .featured .stack{padding-top:14px;border-top:none;}
+  .links-row{margin-top:16px;}
+  .links-row a{font-size:14px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:1px;transition:opacity .2s ease;}
+  .links-row a:hover{opacity:.55;}
+  .note{font-size:14px;color:var(--ink-faint);font-style:italic;margin-top:16px;}
+  .feat-title em{font-style:italic;}
+
+  /* projects (line-separated list) */
+  .proj{padding:28px 0;border-top:1px solid var(--line);scroll-margin-top:90px;}
+  .proj:first-of-type{border-top:none;}
+  .proj-title{font-family:'Newsreader',serif;font-size:21px;font-weight:500;line-height:1.3;}
+  .proj-role{font-size:13px;color:var(--ink-faint);margin:3px 0 14px;}
+  .proj-block{margin-bottom:12px;}
+  .proj-block .lbl{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:3px;}
+  .proj-block p{font-size:15px;color:var(--ink-soft);margin:0;}
+  .proj .stack{border-top:none;padding-top:6px;}
+  .proj-note{font-size:13px;color:var(--ink-faint);font-style:italic;margin-top:10px;}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* shared contact footer */
+  .contact{border-top:1px solid var(--line);padding:90px 0 100px;text-align:center;transition:border-color .5s ease;scroll-margin-top:70px;}
+  .contact-wrap{max-width:760px;margin:0 auto;padding:0 32px;}
+  .contact h2{font-family:'Newsreader',serif;font-weight:400;font-size:34px;margin-bottom:20px;letter-spacing:-.01em;}
+  .contact p{color:var(--ink-soft);max-width:480px;margin:0 auto 30px;}
+  .contact-links{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;}
+  .contact-links a{font-size:15px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;transition:opacity .2s ease;}
+  .contact-links a:hover{opacity:.55;}
+  .colophon{padding:26px 0;text-align:center;font-size:13px;color:var(--ink-faint);}
+  @media(max-width:560px){.contact{padding:64px 0 70px;}.contact h2{font-size:27px;}.contact-wrap{padding:0 22px;}}
+
+  @media(max-width:560px){
+    body{font-size:16px;}
+    .featured{padding:26px 22px;}
+    .sect-title{font-size:24px;}
+  }
+
+  /* hamburger (mobile only) */
+  .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;line-height:0;color:var(--ink);}
+  .hamburger svg{width:24px;height:24px;display:block;}
+  .menu-backdrop{display:none;}
+
+  /* dark-mode bulb glow */
+  html[data-theme="dark"] .bulb{color:#f2d27a;}
+  html[data-theme="dark"] .bulb svg{filter:drop-shadow(0 0 5px rgba(242,210,122,.7));}
+  html[data-theme="dark"] .bulb:hover{color:#f7dd96;}
+
+  @media(max-width:680px){
+    .hamburger{display:block;}
+    .nav-inner{padding:16px 22px;flex-wrap:nowrap;}
+    .nav-links{
+      position:fixed;top:0;right:0;bottom:0;width:78%;max-width:320px;z-index:60;
+      background:var(--paper);
+      isolation:isolate;opacity:1;
+      border-left:1px solid var(--line);
+      flex-direction:column;align-items:flex-start;gap:8px;
+      padding:84px 30px 30px;
+      transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);
+      box-shadow:-8px 0 40px rgba(0,0,0,.25);
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{font-size:17px;padding:6px 0;}
+    .menu-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:55;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+    .menu-backdrop.open{display:block;opacity:1;pointer-events:auto;}
+    .menu-close{position:absolute;top:22px;right:24px;background:none;border:none;cursor:pointer;color:var(--ink);padding:6px;line-height:0;}
+    .menu-close svg{width:22px;height:22px;}
+    .nav-right{gap:14px;}
+  }
+
+  @media(max-width:680px){
+    html[data-theme="light"] .nav-links{background:#eef1ea;}
+    html[data-theme="dark"] .nav-links{background:#1b1f1a;}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-name">Amit Kurmoli</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <button class="menu-close" id="menuClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+        
+        <a href="about.html">About</a>
+        <a href="experience.html" class="active">Experience</a>
+        <a href="#contact">Contact</a>
+        <a href="resume.pdf" download="Amit_Kurmoli_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+      </button>
+      <button class="bulb" id="themeToggle" aria-label="Toggle light and dark mode" title="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <g class="rays">
+            <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/>
+            <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
+            <line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/>
+          </g>
+          <circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+
+<div class="layout">
+  <aside class="sidenav" id="sidenav">
+    <a href="#skills" class="active">Skills</a>
+    <a href="#featured">Featured Work</a>
+    <a href="#projects">Projects</a>
+  </aside>
+
+  <main class="content">
+
+    <!-- SKILLS -->
+    <section class="sect" id="skills">
+      <h2 class="sect-title reveal">Skills</h2>
+      <p class="sect-intro reveal">The tools and practices I work with, grouped by where they fit in the testing lifecycle.</p>
+
+      <div class="skill-group reveal">
+        <div class="skill-cat">Test Automation</div>
+        <div class="skill-row">
+          <span class="chip">Python</span><span class="chip">pytest</span><span class="chip">Playwright</span>
+          <span class="chip">Selenium WebDriver</span><span class="chip">Appium</span><span class="chip">Winium</span>
+          <span class="chip">Page Object Model</span><span class="chip">Framework design</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-cat">API Testing</div>
+        <div class="skill-row">
+          <span class="chip">REST</span><span class="chip">GraphQL</span><span class="chip">REST Assured</span>
+          <span class="chip">httpx</span><span class="chip">requests</span><span class="chip">Contract testing</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-cat">Performance</div>
+        <div class="skill-row">
+          <span class="chip">k6</span><span class="chip">Load &amp; stress testing</span><span class="chip">SLO thresholds</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-cat">CI / CD &amp; Infrastructure</div>
+        <div class="skill-row">
+          <span class="chip">GitHub Actions</span><span class="chip">Jenkins</span><span class="chip">Docker</span>
+          <span class="chip">Pipeline design</span><span class="chip">Quality gates</span><span class="chip">AWS (EC2, S3, IAM)</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-cat">Languages &amp; Data</div>
+        <div class="skill-row">
+          <span class="chip">Python</span><span class="chip">Java</span><span class="chip">SQL</span><span class="chip">Database validation</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-cat">Practices</div>
+        <div class="skill-row">
+          <span class="chip">AI-assisted development</span><span class="chip">Accessibility (WCAG)</span>
+          <span class="chip">Cross-browser</span><span class="chip">Cross-platform mobile</span><span class="chip">Agile delivery</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED -->
+    <section class="sect" id="featured">
+      <h2 class="sect-title reveal">Featured Work</h2>
+      <p class="sect-intro reveal">The two projects I'm most proud of — one independent, one research.</p>
+
+      <div class="featured reveal">
+        <span class="feat-tag">Independent Project</span>
+        <div class="feat-title">Anton — A Test Automation Framework with One Shape for Every Engine</div>
+        <div class="feat-role">Designer &amp; sole engineer</div>
+        <p>A test automation framework with four engines — API, UI, performance, and chaos — built against Vendure, an open-source GraphQL e-commerce platform. Every engine implements the same three-method interface — <em>prepare → execute → collect artifacts</em> — so the orchestration layer, fixtures, and reporting are shared across all test types.</p>
+        <ul>
+          <li><strong>Four engines, one interface</strong> — API tests in pytest over a GraphQL client, UI tests in Playwright with Page Object Model, performance via k6 as a subprocess, and chaos via Toxiproxy injecting real network faults.</li>
+          <li><strong>Real faults, not mocks</strong> — chaos tests inject latency and connection-level failures into the live system, verifying how it behaves under stress rather than how its error-handling looks in isolation.</li>
+          <li><strong>Deliberate fixture scoping</strong> — session-scoped shared clients, function-scoped customers, and no hardcoded IDs; checkout discovers shipping and payment methods at runtime, so the suite works against any Vendure instance.</li>
+          <li><strong>End-to-end pipeline</strong> — a pytest plugin records every run to SQLite, a FastAPI + React dashboard reads from it, and GitHub Actions runs all 44 tests on every push.</li>
+        </ul>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">pytest</span><span class="chip">Playwright</span>
+          <span class="chip">GraphQL</span><span class="chip">k6</span><span class="chip">Toxiproxy</span>
+          <span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">SQLite</span>
+          <span class="chip">Docker Compose</span><span class="chip">GitHub Actions</span>
+        </div>
+        <div class="links-row"><a href="https://github.com/Ak79p/anton" target="_blank" rel="noopener">View on GitHub →</a></div>
+      </div>
+
+      <div class="featured reveal">
+        <span class="feat-tag">Capstone Research · M.S.</span>
+        <div class="feat-title">ASL-TRM — A Transformer Model for ASL Gesture Recognition</div>
+        <div class="feat-role">Data pipeline owner · model development contributor — 3-person team</div>
+        <p>A capstone research project building a lightweight Transformer-based system for American Sign Language gesture recognition. It processes ASL video, extracts spatial–temporal pose and motion features, and applies a custom compact architecture — TRM-Micro — to translate signed gestures into text.</p>
+        <ul>
+          <li><strong>Owned the end-to-end data pipeline</strong> — dataset preparation (WLASL, Microsoft ASL-Citizen), MediaPipe-based feature extraction, and data ingestion feeding the model for training and evaluation.</li>
+          <li><strong>Contributed to model development</strong> — assisted in building TRM-Micro, adapting recursive-reasoning principles from recent Transformer research to the spatio-temporal domain of sign language.</li>
+          <li><strong>Result</strong> — TRM-Micro v3 matched or exceeded the ST-GCN baseline on ASL-Citizen (Top-1: 61.46% vs 59.52%) at roughly one-fifth the parameter count (~622K vs ~3.1M).</li>
+        </ul>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">TensorFlow</span>
+          <span class="chip">Transformer architectures</span><span class="chip">MediaPipe Holistic</span><span class="chip">Streamlit</span>
+        </div>
+        <p class="note">Repository kept private pending publication of the research paper.</p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="sect" id="projects">
+      <h2 class="sect-title reveal">Projects</h2>
+      <p class="sect-intro reveal">Selected work across my career — at Pepper Square and Sharp.</p>
+
+      <!-- Pepper Square framework -->
+      <div class="proj reveal" id="proj-peppersquare">
+        <div class="proj-title">Test Operations &amp; Automation Framework</div>
+        <div class="proj-role">Pepper Square · Led testing operations</div>
+        <div class="proj-block"><span class="lbl">About</span><p>As the agency moved toward building software in-house, there was no existing QA function to inherit. This was the foundation: the standards, process, and tooling that testing across the team's development work would be built on.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Designed the testing operations and standards from scratch, and built a reusable automation framework deliberately right-sized — scaled and integrated with CI for fast developer feedback, with unit and end-to-end suites cleanly separated.</p></div>
+        <div class="stack"><span class="chip">Java</span><span class="chip">Selenium</span><span class="chip">CI integration</span><span class="chip">Test architecture</span></div>
+      </div>
+
+      <!-- Fitness app -->
+      <div class="proj reveal">
+        <div class="proj-title">Cross-Platform Fitness App Revamp</div>
+        <div class="proj-role">Pepper Square · Led QA — health &amp; fitness sector</div>
+        <div class="proj-block"><span class="lbl">About</span><p>A ground-up revamp of a React Native mobile application (iOS and Android) for a US-based fitness organization, connecting users to a network of outdoor gyms with workout content, health-metric tracking, and an in-app checkout flow.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Led QA across the UI, service, and data layers — manual functional testing, Appium UI automation, REST Assured API testing, and SQL-based validation. Also bridged Figma designs into developer requirements and co-designed the admin CMS dashboard.</p></div>
+        <div class="stack"><span class="chip">React Native</span><span class="chip">Appium</span><span class="chip">REST Assured</span><span class="chip">SQL</span><span class="chip">iOS &amp; Android</span></div>
+        <p class="proj-note">Client name available on request.</p>
+      </div>
+
+      <!-- Accessibility -->
+      <div class="proj reveal">
+        <div class="proj-title">Accessibility Testing — Global Pharmaceutical Website</div>
+        <div class="proj-role">Pepper Square · Accessibility QA lead — WCAG compliance</div>
+        <div class="proj-block"><span class="lbl">About</span><p>A website revamp for a global pharmaceutical company, where accessibility compliance was a release requirement validated against WCAG guidelines.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Led accessibility testing — keyboard-only navigation, colour contrast and high-contrast mode, font scaling to 200% zoom, caption and transcript verification, form field labels, CSS-disabled structure checks, and skip-navigation links. Worked with designers and developers to resolve issues before release.</p></div>
+        <div class="stack"><span class="chip">WCAG</span><span class="chip">Accessibility testing</span><span class="chip">Keyboard navigation</span><span class="chip">Cross-browser</span></div>
+        <p class="proj-note">Client name available on request.</p>
+      </div>
+
+      <!-- Restaurant web -->
+      <div class="proj reveal">
+        <div class="proj-title">Web Revamp — National Restaurant Brand</div>
+        <div class="proj-role">Pepper Square · UI testing contributor</div>
+        <div class="proj-block"><span class="lbl">About</span><p>A revamp of a major national restaurant brand's web experience — a short-term engagement focused on UI quality across the redesigned customer-facing site.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Contributed UI and cross-browser testing — verifying layout, responsiveness, and visual consistency across browsers and devices.</p></div>
+        <div class="stack"><span class="chip">Selenium</span><span class="chip">Cross-browser</span><span class="chip">UI testing</span></div>
+        <p class="proj-note">Client name available on request.</p>
+      </div>
+
+      <!-- Cocoro -->
+      <div class="proj reveal" id="proj-sharp">
+        <div class="proj-title">COCORO OFFICE Shared Folder</div>
+        <div class="proj-role">Sharp · QA — cloud storage &amp; document-sharing service</div>
+        <div class="proj-block"><span class="lbl">About</span><p>Sharp's cloud storage and document-sharing service, with organization-wide shared folders, access control, and secure external file sharing.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Manual functional testing of file-sharing workflows — upload, download, permission enforcement, and secure share links (password, download-count, expiry) — plus Java/Selenium web-portal automation inside an established enterprise framework.</p></div>
+        <div class="stack"><span class="chip">Java</span><span class="chip">Selenium</span><span class="chip">TestNG / JUnit</span><span class="chip">Manual testing</span></div>
+      </div>
+
+      <!-- Sharpdesk Mobile -->
+      <div class="proj reveal">
+        <div class="proj-title">Sharpdesk Mobile</div>
+        <div class="proj-role">Sharp · QA — cross-platform mobile printing &amp; scanning app</div>
+        <div class="proj-block"><span class="lbl">About</span><p>A cross-platform app connecting smartphones and tablets to Sharp multifunction printers over wireless LAN, for mobile printing and scanning.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Manual functional testing of print, scan, and file-sharing workflows across iOS and Android, and Java/Appium UI automation covering variation in devices, screen sizes, and OS versions.</p></div>
+        <div class="stack"><span class="chip">Java</span><span class="chip">Appium</span><span class="chip">iOS &amp; Android</span><span class="chip">Manual testing</span></div>
+      </div>
+
+      <!-- Sharpdesk Desktop -->
+      <div class="proj reveal">
+        <div class="proj-title">Sharpdesk Desktop</div>
+        <div class="proj-role">Sharp · QA — Windows document-management application</div>
+        <div class="proj-block"><span class="lbl">About</span><p>An integrated Windows desktop application for document and image management, including a bundled Network Scanner Tool and Composer components.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Manual functional testing across document, scanning, OCR, and annotation workflows, and Java/Winium UI regression automation (a Selenium-style WebDriver tool for Windows desktop applications).</p></div>
+        <div class="stack"><span class="chip">Java</span><span class="chip">Winium</span><span class="chip">Desktop UI automation</span><span class="chip">Manual testing</span></div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<section class="contact" id="contact">
+  <div class="contact-wrap">
+    <h2 class="reveal">Let's talk quality.</h2>
+    <p class="reveal">Open to SDET and QA automation roles — remote, India or global. If your team cares about test systems that are thoughtfully built, I'd like to hear from you.</p>
+    <div class="contact-links reveal">
+      <a href="mailto:amitkurmoli79@gmail.com">amitkurmoli79@gmail.com</a>
+      <a href="https://www.linkedin.com/in/amit-kurmoli/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Ak79p/" target="_blank" rel="noopener">GitHub</a>
+      <a href="resume.pdf" download="Amit_Kurmoli_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    </div>
+  </div>
+</section>
+<div class="colophon">© 2026 Amit Kurmoli</div>
+
+<script>
+  const root=document.documentElement;
+  // load saved theme (default stays light if none saved)
+  try{var saved=localStorage.getItem('theme');if(saved){root.setAttribute('data-theme',saved);}}catch(e){}
+
+  // nav border on scroll
+  const nav=document.getElementById('nav');
+  if(nav){window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);},{passive:true});}
+
+  // theme toggle — persists across all pages
+  const toggle=document.getElementById('themeToggle');
+  if(toggle){
+    toggle.addEventListener('click',function(){
+      var next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+      root.setAttribute('data-theme',next);
+      try{localStorage.setItem('theme',next);}catch(e){}
+    });
+  }
+
+  // mobile menu
+  const hb=document.getElementById('hamburger');
+  const navLinks=document.querySelector('.nav-links');
+  const backdrop=document.getElementById('menuBackdrop');
+  const mClose=document.getElementById('menuClose');
+  function openMenu(){navLinks.classList.add('open');if(backdrop)backdrop.classList.add('open');document.body.style.overflow='hidden';}
+  function closeMenu(){navLinks.classList.remove('open');if(backdrop)backdrop.classList.remove('open');document.body.style.overflow='';}
+  if(hb)hb.addEventListener('click',openMenu);
+  if(mClose)mClose.addEventListener('click',closeMenu);
+  if(backdrop)backdrop.addEventListener('click',closeMenu);
+  // close menu after navigation starts, but never block the link
+  if(navLinks){
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){ setTimeout(closeMenu,80); });
+    });
+  }
+
+  // reveal on scroll
+  const io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=(Math.min(i,6)*0.07)+'s';io.observe(el);});
+
+  // sidenav scrollspy (experience page)
+  const sections=[].slice.call(document.querySelectorAll('.sect'));
+  const slinks=[].slice.call(document.querySelectorAll('.sidenav a'));
+  if(sections.length && slinks.length){
+    const spy=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){slinks.forEach(function(a){a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id);});}
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    sections.forEach(function(s){spy.observe(s);});
+  }
+</script>
+
+</body>
+</html>
