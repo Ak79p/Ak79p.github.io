@@ -125,6 +125,7 @@
   html[data-theme="dark"] .bulb:hover{color:#f7dd96;}
 
   @media(max-width:680px){
+    nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--paper);}
     .hamburger{display:block;}
     .nav-inner{padding:16px 22px;flex-wrap:nowrap;}
     .nav-links{
@@ -139,7 +140,7 @@
     }
     .nav-links.open{transform:translateX(0);}
     .nav-links a{font-size:17px;padding:6px 0;}
-    .menu-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:55;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+    .menu-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:45;opacity:0;pointer-events:none;transition:opacity .3s ease;}
     .menu-backdrop.open{display:block;opacity:1;pointer-events:auto;}
     .menu-close{position:absolute;top:22px;right:24px;background:none;border:none;cursor:pointer;color:var(--ink);padding:6px;line-height:0;}
     .menu-close svg{width:22px;height:22px;}
