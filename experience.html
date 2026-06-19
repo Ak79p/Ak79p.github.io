@@ -3,183 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Experience — Amit Kurmoli</title>
+<title>Work — Amit Kurmoli</title>
+<meta name="description" content="Skills, featured frameworks, and project work by Amit Kurmoli — SDET / QA Automation Engineer.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Spline+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Spline+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#eef1ea; --paper-soft:#f4f6f0; --ink:#22271f;
     --ink-soft:#4c5447; --ink-faint:#838b7c; --line:#d4d9cb; --card:#f6f8f2;
-    --shadow:0 1px 2px rgba(34,39,31,.04),0 8px 24px rgba(34,39,31,.06);
-    --shadow-hover:0 2px 6px rgba(34,39,31,.07),0 16px 40px rgba(34,39,31,.11);
+    --accent:#2e5a4b; --accent-ink:#ffffff;
+    --serif:'Newsreader',Georgia,serif;
+    --sans:'Spline Sans',-apple-system,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
   }
   html[data-theme="dark"]{
     --paper:#1b1f1a; --paper-soft:#232821; --ink:#e8ece3;
     --ink-soft:#b3bba9; --ink-faint:#7e8775; --line:#363c30; --card:#232821;
-    --shadow:0 1px 2px rgba(0,0,0,.2),0 8px 24px rgba(0,0,0,.3);
-    --shadow-hover:0 2px 6px rgba(0,0,0,.25),0 16px 40px rgba(0,0,0,.4);
+    --accent:#9cc3b2; --accent-ink:#16231d;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
-  body{
-    background:var(--paper);color:var(--ink);
-    font-family:'Spline Sans',-apple-system,sans-serif;
-    font-size:17px;line-height:1.7;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-    transition:background .5s ease,color .5s ease;
-  }
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;transition:background .5s ease,color .5s ease;}
   ::selection{background:var(--ink);color:var(--paper);}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
 
-  /* nav */
-  nav{
-    position:sticky;top:0;z-index:50;
-    background:color-mix(in srgb,var(--paper) 82%,transparent);
+  nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 84%,transparent);
     backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-    border-bottom:1px solid transparent;transition:border-color .3s ease,background .5s ease;
-  }
+    border-bottom:1px solid transparent;transition:border-color .3s ease,background .5s ease;}
   nav.scrolled{border-bottom-color:var(--line);}
-  .nav-inner{
-    max-width:1100px;margin:0 auto;padding:18px 40px;
-    display:flex;justify-content:space-between;align-items:center;
-  }
-  .nav-name{font-family:'Newsreader',serif;font-size:18px;font-weight:500;text-decoration:none;color:var(--ink);}
-  .nav-right{display:flex;align-items:center;gap:26px;}
-  .nav-links{display:flex;gap:26px;}
+  .nav-inner{max-width:1040px;margin:0 auto;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;}
+  .nav-name{font-family:var(--serif);font-size:18px;font-weight:500;text-decoration:none;color:var(--ink);white-space:nowrap;}
+  .nav-right{display:flex;align-items:center;gap:24px;}
+  .nav-links{display:flex;gap:24px;}
   .nav-links a{color:var(--ink-soft);text-decoration:none;font-size:14px;transition:color .2s ease;white-space:nowrap;}
   .nav-links a:hover,.nav-links a.active{color:var(--ink);}
+  .nav-links a.active{font-weight:500;}
   .bulb{background:none;border:none;cursor:pointer;padding:4px;line-height:0;color:var(--ink-faint);transition:color .3s ease,transform .3s ease;}
   .bulb:hover{color:var(--ink);transform:scale(1.1);}
   .bulb svg{width:20px;height:20px;display:block;}
-  .bulb .rays{transition:opacity .3s ease;}
   html[data-theme="dark"] .bulb .rays{opacity:0;}
-  .nav-name{white-space:nowrap;}
-  @media(max-width:560px){.nav-inner{padding:14px 16px;flex-wrap:wrap;gap:10px;}.nav-right{gap:14px;}.nav-links{gap:14px;}.nav-links a{font-size:13px;}.nav-name{font-size:16px;}}
+  html[data-theme="dark"] .bulb{color:#f2d27a;}
+  html[data-theme="dark"] .bulb svg{filter:drop-shadow(0 0 5px rgba(242,210,122,.7));}
 
-  /* layout: left section-nav + content */
-  .layout{max-width:1100px;margin:0 auto;padding:60px 40px 0;display:flex;gap:56px;align-items:flex-start;}
-  .sidenav{
-    position:sticky;top:90px;flex:0 0 160px;
-    display:flex;flex-direction:column;gap:4px;
-  }
-  .sidenav a{
-    font-size:14px;color:var(--ink-faint);text-decoration:none;
-    padding:8px 0 8px 16px;border-left:2px solid var(--line);
-    transition:color .2s ease,border-color .2s ease;
-  }
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);}
+
+  /* layout */
+  .layout{max-width:1040px;margin:0 auto;padding:54px 40px 0;display:flex;gap:56px;align-items:flex-start;}
+  .sidenav{position:sticky;top:88px;flex:0 0 150px;display:flex;flex-direction:column;gap:2px;}
+  .sidenav a{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--ink-faint);text-decoration:none;
+    padding:8px 0 8px 16px;border-left:2px solid var(--line);transition:color .2s ease,border-color .2s ease;}
   .sidenav a:hover{color:var(--ink-soft);}
-  .sidenav a.active{color:var(--ink);border-left-color:var(--ink);font-weight:500;}
-  .content{flex:1 1 auto;min-width:0;max-width:760px;}
+  .sidenav a.active{color:var(--ink);border-left-color:var(--accent);}
+  .content{flex:1 1 auto;min-width:0;max-width:740px;}
+  @media(max-width:820px){.layout{flex-direction:column;gap:0;padding:0 22px;}.sidenav{display:none;}.content{padding-top:8px;max-width:100%;}}
 
-  @media(max-width:820px){
-    .layout{flex-direction:column;gap:0;padding:0 22px;}
-    .sidenav{display:none;}
-    .content{padding-top:10px;max-width:100%;}
-  }
-
-  /* sections */
-  .sect{padding:24px 0 56px;scroll-margin-top:90px;}
-  .sect-title{
-    font-family:'Newsreader',serif;font-weight:400;font-size:28px;
-    margin-bottom:8px;letter-spacing:-.01em;
-  }
-  .sect-intro{color:var(--ink-soft);font-size:16px;margin-bottom:30px;max-width:560px;}
+  .sect{padding:30px 0 54px;scroll-margin-top:88px;}
+  .sect-title{font-family:var(--serif);font-weight:400;font-size:29px;margin-bottom:8px;letter-spacing:-.01em;}
+  .sect-intro{color:var(--ink-soft);font-size:16px;margin-bottom:32px;max-width:560px;}
 
   /* skills */
-  .skill-group{margin-bottom:22px;}
-  .skill-cat{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;}
+  .skill-group{margin-bottom:24px;}
+  .skill-cat{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:11px;}
   .skill-row{display:flex;flex-wrap:wrap;gap:8px;}
-  .chip{font-size:13px;color:var(--ink-soft);background:var(--paper-soft);border:1px solid var(--line);border-radius:6px;padding:5px 11px;transition:background .5s ease,border-color .5s ease;}
+  .chip{font-family:var(--mono);font-size:12px;color:var(--ink-soft);background:var(--paper-soft);border:1px solid var(--line);border-radius:6px;padding:5px 10px;transition:background .5s ease,border-color .5s ease;}
 
   /* featured */
-  .featured{padding:28px 0;border-top:1px solid var(--line);scroll-margin-top:90px;}
+  .featured{padding:30px 0;border-top:1px solid var(--line);scroll-margin-top:88px;}
   .featured:first-of-type{border-top:none;}
-  .feat-tag{display:inline-block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line);border-radius:100px;padding:4px 12px;margin-bottom:14px;}
-  .feat-title{font-family:'Newsreader',serif;font-size:21px;font-weight:500;line-height:1.3;margin-bottom:4px;}
-  .feat-role{font-size:13px;color:var(--ink-faint);margin-bottom:14px;}
-  .featured p{font-size:15px;color:var(--ink-soft);margin-bottom:14px;}
+  .feat-tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line);border-radius:100px;padding:4px 12px;margin-bottom:15px;}
+  .feat-title{font-family:var(--serif);font-size:22px;font-weight:500;line-height:1.3;margin-bottom:4px;}
+  .feat-role{font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin-bottom:15px;}
+  .featured>p{font-size:15px;color:var(--ink-soft);margin-bottom:15px;}
   .featured ul{list-style:none;margin-bottom:16px;}
   .featured li{font-size:14px;color:var(--ink-soft);padding-left:18px;position:relative;margin-bottom:9px;line-height:1.6;}
-  .featured li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--ink-faint);}
+  .featured li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--accent);}
   .featured li strong{color:var(--ink);font-weight:600;}
-  .stack{display:flex;flex-wrap:wrap;gap:8px;padding-top:6px;}
-  .featured .stack{padding-top:14px;border-top:none;}
+  .stack{display:flex;flex-wrap:wrap;gap:7px;padding-top:14px;}
   .links-row{margin-top:16px;}
-  .links-row a{font-size:14px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:1px;transition:opacity .2s ease;}
-  .links-row a:hover{opacity:.55;}
-  .note{font-size:14px;color:var(--ink-faint);font-style:italic;margin-top:16px;}
+  .links-row a{font-family:var(--mono);font-size:13px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;transition:color .2s ease;}
+  .links-row a:hover{color:var(--accent);}
   .feat-title em{font-style:italic;}
 
-  /* projects (line-separated list) */
-  .proj{padding:28px 0;border-top:1px solid var(--line);scroll-margin-top:90px;}
+  /* projects */
+  .proj{padding:28px 0;border-top:1px solid var(--line);scroll-margin-top:88px;}
   .proj:first-of-type{border-top:none;}
-  .proj-title{font-family:'Newsreader',serif;font-size:21px;font-weight:500;line-height:1.3;}
-  .proj-role{font-size:13px;color:var(--ink-faint);margin:3px 0 14px;}
+  .proj-title{font-family:var(--serif);font-size:21px;font-weight:500;line-height:1.3;}
+  .proj-role{font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin:4px 0 14px;}
   .proj-block{margin-bottom:12px;}
-  .proj-block .lbl{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:3px;}
+  .proj-block .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:3px;}
   .proj-block p{font-size:15px;color:var(--ink-soft);margin:0;}
-  .proj .stack{border-top:none;padding-top:6px;}
-  .proj-note{font-size:13px;color:var(--ink-faint);font-style:italic;margin-top:10px;}
+  .proj .stack{padding-top:6px;}
+  .proj-note{font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin-top:10px;}
 
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1);}
-  .reveal.in{opacity:1;transform:none;}
-
-  /* shared contact footer */
-  .contact{border-top:1px solid var(--line);padding:90px 0 100px;text-align:center;transition:border-color .5s ease;scroll-margin-top:70px;}
+  /* contact */
+  .contact{border-top:1px solid var(--line);padding:90px 0 100px;text-align:center;scroll-margin-top:70px;}
   .contact-wrap{max-width:760px;margin:0 auto;padding:0 32px;}
-  .contact h2{font-family:'Newsreader',serif;font-weight:400;font-size:34px;margin-bottom:20px;letter-spacing:-.01em;}
-  .contact p{color:var(--ink-soft);max-width:480px;margin:0 auto 30px;}
-  .contact-links{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;}
-  .contact-links a{font-size:15px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;transition:opacity .2s ease;}
-  .contact-links a:hover{opacity:.55;}
-  .colophon{padding:26px 0;text-align:center;font-size:13px;color:var(--ink-faint);}
-  @media(max-width:560px){.contact{padding:64px 0 70px;}.contact h2{font-size:27px;}.contact-wrap{padding:0 22px;}}
+  .contact h2{font-family:var(--serif);font-weight:400;font-size:34px;margin-bottom:18px;letter-spacing:-.01em;}
+  .contact p{color:var(--ink-soft);max-width:500px;margin:0 auto 32px;}
+  .contact-links{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;}
+  .contact-links a{font-family:var(--mono);font-size:13.5px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink-faint);padding-bottom:2px;transition:color .2s ease,border-color .2s ease;}
+  .contact-links a:hover{color:var(--accent);border-bottom-color:var(--accent);}
+  .colophon{padding:26px 0;text-align:center;font-family:var(--mono);font-size:12px;color:var(--ink-faint);}
 
-  @media(max-width:560px){
-    body{font-size:16px;}
-    .featured{padding:26px 22px;}
-    .sect-title{font-size:24px;}
-  }
+  @media(max-width:560px){body{font-size:16px;}.sect-title{font-size:25px;}.contact-wrap{padding:0 22px;}}
+  @media(max-width:680px){.nav-inner{padding:16px 22px;}}
 
-  /* hamburger (mobile only) */
   .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;line-height:0;color:var(--ink);}
   .hamburger svg{width:24px;height:24px;display:block;}
   .menu-backdrop{display:none;}
-
-  /* dark-mode bulb glow */
-  html[data-theme="dark"] .bulb{color:#f2d27a;}
-  html[data-theme="dark"] .bulb svg{filter:drop-shadow(0 0 5px rgba(242,210,122,.7));}
-  html[data-theme="dark"] .bulb:hover{color:#f7dd96;}
-
+  .menu-close{display:none;}
   @media(max-width:680px){
     nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--paper);}
     .hamburger{display:block;}
-    .nav-inner{padding:16px 22px;flex-wrap:nowrap;}
-    .nav-links{
-      position:fixed;top:0;right:0;bottom:0;width:78%;max-width:320px;z-index:60;
-      background:var(--paper);
-      isolation:isolate;opacity:1;
-      border-left:1px solid var(--line);
-      flex-direction:column;align-items:flex-start;gap:8px;
-      padding:84px 30px 30px;
-      transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);
-      box-shadow:-8px 0 40px rgba(0,0,0,.25);
-    }
+    .nav-inner{flex-wrap:nowrap;}
+    .nav-links{position:fixed;top:0;right:0;bottom:0;width:78%;max-width:320px;z-index:60;background:var(--paper);
+      border-left:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:8px;padding:84px 30px 30px;
+      transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 40px rgba(0,0,0,.22);}
     .nav-links.open{transform:translateX(0);}
     .nav-links a{font-size:17px;padding:6px 0;}
+    .menu-close{display:block;position:absolute;top:22px;right:24px;background:none;border:none;cursor:pointer;color:var(--ink);padding:6px;line-height:0;}
+    .menu-close svg{width:22px;height:22px;}
     .menu-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:45;opacity:0;pointer-events:none;transition:opacity .3s ease;}
     .menu-backdrop.open{display:block;opacity:1;pointer-events:auto;}
-    .menu-close{position:absolute;top:22px;right:24px;background:none;border:none;cursor:pointer;color:var(--ink);padding:6px;line-height:0;}
-    .menu-close svg{width:22px;height:22px;}
-    .nav-right{gap:14px;}
-  }
-
-  @media(max-width:680px){
     html[data-theme="light"] .nav-links{background:#eef1ea;}
     html[data-theme="dark"] .nav-links{background:#1b1f1a;}
   }
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;}.reveal{opacity:1!important;transform:none!important;transition:none!important;}.bulb:hover{transform:none;}}
 </style>
 </head>
 <body>
@@ -192,9 +146,8 @@
         <button class="menu-close" id="menuClose" aria-label="Close menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
         </button>
-        
         <a href="about.html">About</a>
-        <a href="experience.html" class="active">Experience</a>
+        <a href="experience.html" class="active">Work</a>
         <a href="#contact">Contact</a>
         <a href="resume.pdf" download="Amit_Kurmoli_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
       </div>
@@ -220,7 +173,7 @@
 <div class="layout">
   <aside class="sidenav" id="sidenav">
     <a href="#skills" class="active">Skills</a>
-    <a href="#featured">Featured Work</a>
+    <a href="#featured">Featured</a>
     <a href="#projects">Projects</a>
   </aside>
 
@@ -229,7 +182,7 @@
     <!-- SKILLS -->
     <section class="sect" id="skills">
       <h2 class="sect-title reveal">Skills</h2>
-      <p class="sect-intro reveal">The tools and practices I work with, grouped by where they fit in the testing lifecycle.</p>
+      <p class="sect-intro reveal">The tools and practices I work with, grouped by where they sit in the testing lifecycle.</p>
 
       <div class="skill-group reveal">
         <div class="skill-cat">Test Automation</div>
@@ -269,7 +222,7 @@
       <div class="skill-group reveal">
         <div class="skill-cat">Practices</div>
         <div class="skill-row">
-          <span class="chip">AI-assisted development</span><span class="chip">Accessibility (WCAG)</span>
+          <span class="chip">Shift-left testing</span><span class="chip">Accessibility (WCAG)</span>
           <span class="chip">Cross-browser</span><span class="chip">Cross-platform mobile</span><span class="chip">Agile delivery</span>
         </div>
       </div>
@@ -278,17 +231,16 @@
     <!-- FEATURED -->
     <section class="sect" id="featured">
       <h2 class="sect-title reveal">Featured Work</h2>
-      <p class="sect-intro reveal">The two projects I'm most proud of — one independent, one research.</p>
+      <p class="sect-intro reveal">The work I'm most proud of — two independent frameworks and a research capstone.</p>
 
       <div class="featured reveal">
         <span class="feat-tag">Independent Project</span>
-        <div class="feat-title">Anton — A Test Automation Framework with One Shape for Every Engine</div>
+        <div class="feat-title">Anton — A Test Framework with One Shape for Every Engine</div>
         <div class="feat-role">Designer &amp; sole engineer</div>
-        <p>A test automation framework with four engines — API, UI, performance, and chaos — built against Vendure, an open-source GraphQL e-commerce platform. Every engine implements the same three-method interface — <em>prepare → execute → collect artifacts</em> — so the orchestration layer, fixtures, and reporting are shared across all test types.</p>
+        <p>A test automation framework with four engines — API, UI, performance, and chaos — built against Vendure, an open-source GraphQL e-commerce platform. Every engine implements the same three-method interface — <em>prepare → execute → collect artifacts</em> — so orchestration, fixtures, and reporting are shared across all test types.</p>
         <ul>
-          <li><strong>Four engines, one interface</strong> — API tests in pytest over a GraphQL client, UI tests in Playwright with Page Object Model, performance via k6 as a subprocess, and chaos via Toxiproxy injecting real network faults.</li>
+          <li><strong>Four engines, one interface</strong> — API tests in pytest over a GraphQL client, UI in Playwright with Page Object Model, performance via k6 as a subprocess, and chaos via Toxiproxy injecting real network faults.</li>
           <li><strong>Real faults, not mocks</strong> — chaos tests inject latency and connection-level failures into the live system, verifying how it behaves under stress rather than how its error-handling looks in isolation.</li>
-          <li><strong>Deliberate fixture scoping</strong> — session-scoped shared clients, function-scoped customers, and no hardcoded IDs; checkout discovers shipping and payment methods at runtime, so the suite works against any Vendure instance.</li>
           <li><strong>End-to-end pipeline</strong> — a pytest plugin records every run to SQLite, a FastAPI + React dashboard reads from it, and GitHub Actions runs all 44 tests on every push.</li>
         </ul>
         <div class="stack">
@@ -298,6 +250,24 @@
           <span class="chip">Docker Compose</span><span class="chip">GitHub Actions</span>
         </div>
         <div class="links-row"><a href="https://github.com/Ak79p/anton" target="_blank" rel="noopener">View on GitHub →</a></div>
+      </div>
+
+      <div class="featured reveal">
+        <span class="feat-tag">Independent Project</span>
+        <div class="feat-title">API Test Framework — Quality-Gated API Automation</div>
+        <div class="feat-role">Designer &amp; sole engineer</div>
+        <p>A generic API test-automation framework built around a layered test pyramid and a staged CI strategy — smoke, nightly, and release pipelines with progressively stricter quality gates. A FastAPI service stands in as the system under test.</p>
+        <ul>
+          <li><strong>Three-tier quality gates</strong> — a fast smoke pipeline on every push, a nightly pipeline running full regression, contract, k6 performance, and coverage, and a release pipeline that blocks tagging until every gate passes.</li>
+          <li><strong>Layered test pyramid</strong> — unit (mocked), integration (CRUD against a live API), contract (OpenAPI validation via Schemathesis), and end-to-end journeys, with pytest markers for selective, parallel-safe runs.</li>
+          <li><strong>Failure diagnostics</strong> — captures request method, URL, payload, and response on any failed test, surfaced through JUnit XML for CI and Allure for human investigation.</li>
+        </ul>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">pytest</span><span class="chip">FastAPI</span>
+          <span class="chip">Schemathesis</span><span class="chip">k6</span><span class="chip">Ruff</span>
+          <span class="chip">Allure</span><span class="chip">GitHub Actions</span>
+        </div>
+        <div class="links-row"><a href="https://github.com/Ak79p/api-test-framework" target="_blank" rel="noopener">View on GitHub →</a></div>
       </div>
 
       <div class="featured reveal">
@@ -321,18 +291,16 @@
     <!-- PROJECTS -->
     <section class="sect" id="projects">
       <h2 class="sect-title reveal">Projects</h2>
-      <p class="sect-intro reveal">Selected work across my career — at Pepper Square and Sharp.</p>
+      <p class="sect-intro reveal">Selected client and product work across my career — at Pepper Square and Sharp.</p>
 
-      <!-- Pepper Square framework -->
       <div class="proj reveal" id="proj-peppersquare">
         <div class="proj-title">Test Operations &amp; Automation Framework</div>
         <div class="proj-role">Pepper Square · Led testing operations</div>
-        <div class="proj-block"><span class="lbl">About</span><p>As the agency moved toward building software in-house, there was no existing QA function to inherit. This was the foundation: the standards, process, and tooling that testing across the team's development work would be built on.</p></div>
-        <div class="proj-block"><span class="lbl">My contribution</span><p>Designed the testing operations and standards from scratch, and built a reusable automation framework deliberately right-sized — scaled and integrated with CI for fast developer feedback, with unit and end-to-end suites cleanly separated.</p></div>
+        <div class="proj-block"><span class="lbl">About</span><p>As the agency moved toward building software in-house, there was no existing QA function to inherit — this was the foundation: the standards, process, and tooling that testing across the team's development work would be built on.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Designed the testing operations and standards from scratch, and built a reusable automation framework deliberately right-sized — integrated with CI for fast developer feedback, with unit and end-to-end suites cleanly separated.</p></div>
         <div class="stack"><span class="chip">Java</span><span class="chip">Selenium</span><span class="chip">CI integration</span><span class="chip">Test architecture</span></div>
       </div>
 
-      <!-- Fitness app -->
       <div class="proj reveal">
         <div class="proj-title">Cross-Platform Fitness App Revamp</div>
         <div class="proj-role">Pepper Square · Led QA — health &amp; fitness sector</div>
@@ -342,7 +310,6 @@
         <p class="proj-note">Client name available on request.</p>
       </div>
 
-      <!-- Accessibility -->
       <div class="proj reveal">
         <div class="proj-title">Accessibility Testing — Global Pharmaceutical Website</div>
         <div class="proj-role">Pepper Square · Accessibility QA lead — WCAG compliance</div>
@@ -352,7 +319,6 @@
         <p class="proj-note">Client name available on request.</p>
       </div>
 
-      <!-- Restaurant web -->
       <div class="proj reveal">
         <div class="proj-title">Web Revamp — National Restaurant Brand</div>
         <div class="proj-role">Pepper Square · UI testing contributor</div>
@@ -362,7 +328,6 @@
         <p class="proj-note">Client name available on request.</p>
       </div>
 
-      <!-- Cocoro -->
       <div class="proj reveal" id="proj-sharp">
         <div class="proj-title">COCORO OFFICE Shared Folder</div>
         <div class="proj-role">Sharp · QA — cloud storage &amp; document-sharing service</div>
@@ -371,7 +336,6 @@
         <div class="stack"><span class="chip">Java</span><span class="chip">Selenium</span><span class="chip">TestNG / JUnit</span><span class="chip">Manual testing</span></div>
       </div>
 
-      <!-- Sharpdesk Mobile -->
       <div class="proj reveal">
         <div class="proj-title">Sharpdesk Mobile</div>
         <div class="proj-role">Sharp · QA — cross-platform mobile printing &amp; scanning app</div>
@@ -380,7 +344,6 @@
         <div class="stack"><span class="chip">Java</span><span class="chip">Appium</span><span class="chip">iOS &amp; Android</span><span class="chip">Manual testing</span></div>
       </div>
 
-      <!-- Sharpdesk Desktop -->
       <div class="proj reveal">
         <div class="proj-title">Sharpdesk Desktop</div>
         <div class="proj-role">Sharp · QA — Windows document-management application</div>
@@ -396,7 +359,7 @@
 <section class="contact" id="contact">
   <div class="contact-wrap">
     <h2 class="reveal">Let's talk quality.</h2>
-    <p class="reveal">Open to SDET and QA automation roles — remote, India or global. If your team cares about test systems that are thoughtfully built, I'd like to hear from you.</p>
+    <p class="reveal">Open to SDET and QA automation roles. If your team cares about test systems that are thoughtfully built, I'd like to hear from you.</p>
     <div class="contact-links reveal">
       <a href="mailto:amitkurmoli79@gmail.com">amitkurmoli79@gmail.com</a>
       <a href="https://www.linkedin.com/in/amit-kurmoli/" target="_blank" rel="noopener">LinkedIn</a>
@@ -409,24 +372,15 @@
 
 <script>
   const root=document.documentElement;
-  // load saved theme (default stays light if none saved)
   try{var saved=localStorage.getItem('theme');if(saved){root.setAttribute('data-theme',saved);}}catch(e){}
-
-  // nav border on scroll
   const nav=document.getElementById('nav');
   if(nav){window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);},{passive:true});}
-
-  // theme toggle — persists across all pages
   const toggle=document.getElementById('themeToggle');
-  if(toggle){
-    toggle.addEventListener('click',function(){
-      var next=root.getAttribute('data-theme')==='dark'?'light':'dark';
-      root.setAttribute('data-theme',next);
-      try{localStorage.setItem('theme',next);}catch(e){}
-    });
-  }
-
-  // mobile menu
+  if(toggle){toggle.addEventListener('click',function(){
+    var next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });}
   const hb=document.getElementById('hamburger');
   const navLinks=document.querySelector('.nav-links');
   const backdrop=document.getElementById('menuBackdrop');
@@ -436,20 +390,12 @@
   if(hb)hb.addEventListener('click',openMenu);
   if(mClose)mClose.addEventListener('click',closeMenu);
   if(backdrop)backdrop.addEventListener('click',closeMenu);
-  // close menu after navigation starts, but never block the link
-  if(navLinks){
-    navLinks.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click',function(){ setTimeout(closeMenu,80); });
-    });
-  }
-
-  // reveal on scroll
+  if(navLinks){navLinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setTimeout(closeMenu,80);});});}
   const io=new IntersectionObserver(function(entries){
     entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
   },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=(Math.min(i,6)*0.07)+'s';io.observe(el);});
+  document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=(Math.min(i,6)*0.06)+'s';io.observe(el);});
 
-  // sidenav scrollspy (experience page)
   const sections=[].slice.call(document.querySelectorAll('.sect'));
   const slinks=[].slice.call(document.querySelectorAll('.sidenav a'));
   if(sections.length && slinks.length){
@@ -461,6 +407,5 @@
     sections.forEach(function(s){spy.observe(s);});
   }
 </script>
-
 </body>
 </html>
