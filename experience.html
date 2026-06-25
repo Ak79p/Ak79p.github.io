@@ -203,7 +203,8 @@
         <div class="skill-cat">Performance &amp; Observability</div>
         <div class="skill-row">
           <span class="chip">k6</span><span class="chip">Load &amp; stress testing</span><span class="chip">SLO thresholds</span>
-          <span class="chip">Prometheus</span><span class="chip">Grafana</span>
+          <span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">Tempo</span>
+          <span class="chip">Loki</span><span class="chip">OpenTelemetry</span><span class="chip">Distributed tracing</span>
         </div>
       </div>
       <div class="skill-group reveal">
@@ -231,7 +232,7 @@
     <!-- FEATURED -->
     <section class="sect" id="featured">
       <h2 class="sect-title reveal">Featured Work</h2>
-      <p class="sect-intro reveal">The work I'm most proud of — two independent frameworks and a research capstone.</p>
+      <p class="sect-intro reveal">The work I'm most proud of — three independent builds and a research capstone.</p>
 
       <div class="featured reveal">
         <span class="feat-tag">Independent Project</span>
@@ -250,6 +251,25 @@
           <span class="chip">Docker Compose</span><span class="chip">GitHub Actions</span>
         </div>
         <div class="links-row"><a href="https://github.com/Ak79p/anton" target="_blank" rel="noopener">View on GitHub →</a></div>
+      </div>
+
+      <div class="featured reveal">
+        <span class="feat-tag">Independent Project</span>
+        <div class="feat-title">Meridian Performance Audit — Telemetry-Driven Performance Engineering</div>
+        <div class="feat-role">Designer &amp; sole engineer · self-built testbed</div>
+        <p>A self-built performance-engineering case study. &ldquo;Meridian Retail&rdquo; is a fictional Black Friday scenario and the bottlenecks were planted deliberately so I&rsquo;d have something genuine to diagnose — but the system, instrumentation, tests, and every measurement are real. I built a fully instrumented FastAPI + PostgreSQL order API, then ran an independent audit on it.</p>
+        <ul>
+          <li><strong>Full observability stack</strong> — metrics, distributed traces, and structured logs unified in Grafana (Prometheus, Tempo, Loki, OpenTelemetry), with dashboards built around RED and USE signals and log-to-trace correlation.</li>
+          <li><strong>Five-scenario k6 campaign</strong> — baseline, load, stress, spike, and soak against explicit SLOs, surfacing a hard throughput ceiling at ~74 req/s while CPU stayed under 30% — ruling out &ldquo;needs bigger hardware&rdquo; and pointing at a saturated shared resource.</li>
+          <li><strong>Diagnosis from three independent signals</strong> — pool-utilization gauges pinned at max, a Little&rsquo;s Law model predicting the ceiling to a rounding error (73.5 vs 74), and idle-in-transaction sessions revealing checkout holding a database connection across its payment call.</li>
+          <li><strong>Result</strong> — releasing the connection before the payment call lifted sustained throughput 63% (74 → 121 req/s) and dropped checkout errors from 46–66% to zero, on the same hardware — proven with before/after dashboards and written up as executive and technical reports.</li>
+        </ul>
+        <div class="stack">
+          <span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">k6</span>
+          <span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">Tempo</span>
+          <span class="chip">Loki</span><span class="chip">OpenTelemetry</span><span class="chip">Docker</span>
+        </div>
+        <div class="links-row"><a href="https://github.com/Ak79p/meridian-perf-audit" target="_blank" rel="noopener">View on GitHub →</a></div>
       </div>
 
       <div class="featured reveal">
