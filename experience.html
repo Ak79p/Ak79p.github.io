@@ -188,7 +188,7 @@
         <div class="skill-cat">Test Automation</div>
         <div class="skill-row">
           <span class="chip">Python</span><span class="chip">pytest</span><span class="chip">Playwright</span>
-          <span class="chip">Selenium WebDriver</span><span class="chip">Appium</span><span class="chip">Winium</span>
+          <span class="chip">Selenium WebDriver</span><span class="chip">Appium</span><span class="chip">Java</span>
           <span class="chip">Page Object Model</span><span class="chip">Framework design</span>
         </div>
       </div>
@@ -196,7 +196,7 @@
         <div class="skill-cat">API Testing</div>
         <div class="skill-row">
           <span class="chip">REST</span><span class="chip">GraphQL</span><span class="chip">REST Assured</span>
-          <span class="chip">httpx</span><span class="chip">requests</span><span class="chip">Pact</span><span class="chip">Schemathesis</span>
+          <span class="chip">httpx</span><span class="chip">requests</span><span class="chip">Postman</span><span class="chip">Schemathesis</span>
         </div>
       </div>
       <div class="skill-group reveal">
@@ -232,26 +232,7 @@
     <!-- FEATURED -->
     <section class="sect" id="featured">
       <h2 class="sect-title reveal">Featured Work</h2>
-      <p class="sect-intro reveal">The work I'm most proud of — three independent builds and a research capstone.</p>
-
-      <div class="featured reveal">
-        <span class="feat-tag">Independent Project</span>
-        <div class="feat-title">Anton — A Test Framework with One Shape for Every Engine</div>
-        <div class="feat-role">Designer &amp; sole engineer</div>
-        <p>A test automation framework with four engines — API, UI, performance, and chaos — built against Vendure, an open-source GraphQL e-commerce platform. Every engine implements the same three-method interface — <em>prepare → execute → collect artifacts</em> — so orchestration, fixtures, and reporting are shared across all test types.</p>
-        <ul>
-          <li><strong>Four engines, one interface</strong> — API tests in pytest over a GraphQL client, UI in Playwright with Page Object Model, performance via k6 as a subprocess, and chaos via Toxiproxy injecting real network faults.</li>
-          <li><strong>Real faults, not mocks</strong> — chaos tests inject latency and connection-level failures into the live system, verifying how it behaves under stress rather than how its error-handling looks in isolation.</li>
-          <li><strong>End-to-end pipeline</strong> — a pytest plugin records every run to SQLite, a FastAPI + React dashboard reads from it, and GitHub Actions runs all 44 tests on every push.</li>
-        </ul>
-        <div class="stack">
-          <span class="chip">Python</span><span class="chip">pytest</span><span class="chip">Playwright</span>
-          <span class="chip">GraphQL</span><span class="chip">k6</span><span class="chip">Toxiproxy</span>
-          <span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">SQLite</span>
-          <span class="chip">Docker Compose</span><span class="chip">GitHub Actions</span>
-        </div>
-        <div class="links-row"><a href="https://github.com/Ak79p/anton" target="_blank" rel="noopener">View on GitHub →</a></div>
-      </div>
+      <p class="sect-intro reveal">The work I'm most proud of — two independent builds and a research capstone.</p>
 
       <div class="featured reveal">
         <span class="feat-tag">Independent Project</span>
@@ -313,64 +294,47 @@
       <h2 class="sect-title reveal">Projects</h2>
       <p class="sect-intro reveal">Selected client and product work across my career — at Pepper Square and Sharp.</p>
 
+      
       <div class="proj reveal" id="proj-peppersquare">
-        <div class="proj-title">Test Operations &amp; Automation Framework</div>
-        <div class="proj-role">Pepper Square · Led testing operations</div>
-        <div class="proj-block"><span class="lbl">About</span><p>As the agency moved toward building software in-house, there was no existing QA function to inherit — this was the foundation: the standards, process, and tooling that testing across the team's development work would be built on.</p></div>
-        <div class="proj-block"><span class="lbl">My contribution</span><p>Designed the testing operations and standards from scratch, and built a reusable automation framework deliberately right-sized — integrated with CI for fast developer feedback, with unit and end-to-end suites cleanly separated.</p></div>
-        <div class="stack"><span class="chip">Java</span><span class="chip">Selenium</span><span class="chip">CI integration</span><span class="chip">Test architecture</span></div>
+        <div class="proj-title">Cross-Platform Fitness App</div>
+        <div class="proj-role">Pepper Square · QA automation — mobile, API &amp; CMS</div>
+        <div class="proj-block"><span class="lbl">About</span><p>A React Native app (iOS and Android) with a Node.js/NestJS API and a web CMS, for a US-based outdoor-fitness organization — workouts, progress tracking, nearby-location discovery, and an in-app checkout flow.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Built and maintained Appium UI automation (Java, Page Object Model) for core mobile journeys, automated REST API validation (REST Assured) across 20+ endpoints, and added Selenium coverage of the admin CMS. Contributed reusable framework components — TestNG, Maven, parallel execution, retry, Extent Reports — wired into Jenkins. As part of a two-QA team, helped grow a regression suite of ~180–220 automated tests (~90% of business-critical workflows) and cut full regression from ~2 days to under 4 hours.</p></div>
+        <div class="stack"><span class="chip">Java</span><span class="chip">Appium</span><span class="chip">Selenium</span><span class="chip">REST Assured</span><span class="chip">TestNG</span><span class="chip">Maven</span><span class="chip">Jenkins</span><span class="chip">React Native</span></div>
       </div>
 
       <div class="proj reveal">
-        <div class="proj-title">Cross-Platform Fitness App Revamp</div>
-        <div class="proj-role">Pepper Square · Led QA — health &amp; fitness sector</div>
-        <div class="proj-block"><span class="lbl">About</span><p>A ground-up revamp of a React Native mobile application (iOS and Android) for a US-based fitness organization, connecting users to a network of outdoor gyms with workout content, health-metric tracking, and an in-app checkout flow.</p></div>
-        <div class="proj-block"><span class="lbl">My contribution</span><p>Led QA across the UI, service, and data layers — manual functional testing, Appium UI automation, REST Assured API testing, and SQL-based validation. Also bridged Figma designs into developer requirements and co-designed the admin CMS dashboard.</p></div>
-        <div class="stack"><span class="chip">React Native</span><span class="chip">Appium</span><span class="chip">REST Assured</span><span class="chip">SQL</span><span class="chip">iOS &amp; Android</span></div>
-        <p class="proj-note">Client name available on request.</p>
+        <div class="proj-title">Restaurant Online-Ordering Web Platform</div>
+        <div class="proj-role">Pepper Square · UI automation contributor (short engagement)</div>
+        <div class="proj-block"><span class="lbl">About</span><p>An online-ordering and account web app for a US national restaurant brand.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Contributed UI test automation (Selenium, Java) across critical ordering flows — location search, menu, cart, and checkout — with mobile-web validation across iOS and Android viewports, feeding the team's Jenkins smoke and regression runs.</p></div>
+        <div class="stack"><span class="chip">Java</span><span class="chip">Selenium</span><span class="chip">Cross-browser</span><span class="chip">Mobile-web</span><span class="chip">Jenkins</span></div>
       </div>
 
       <div class="proj reveal">
-        <div class="proj-title">Accessibility Testing — Global Pharmaceutical Website</div>
-        <div class="proj-role">Pepper Square · Accessibility QA lead — WCAG compliance</div>
-        <div class="proj-block"><span class="lbl">About</span><p>A website revamp for a global pharmaceutical company, where accessibility compliance was a release requirement validated against WCAG guidelines.</p></div>
-        <div class="proj-block"><span class="lbl">My contribution</span><p>Led accessibility testing — keyboard-only navigation, colour contrast and high-contrast mode, font scaling to 200% zoom, caption and transcript verification, form field labels, CSS-disabled structure checks, and skip-navigation links. Worked with designers and developers to resolve issues before release.</p></div>
-        <div class="stack"><span class="chip">WCAG</span><span class="chip">Accessibility testing</span><span class="chip">Keyboard navigation</span><span class="chip">Cross-browser</span></div>
-        <p class="proj-note">Client name available on request.</p>
-      </div>
-
-      <div class="proj reveal">
-        <div class="proj-title">Web Revamp — National Restaurant Brand</div>
-        <div class="proj-role">Pepper Square · UI testing contributor</div>
-        <div class="proj-block"><span class="lbl">About</span><p>A revamp of a major national restaurant brand's web experience — a short-term engagement focused on UI quality across the redesigned customer-facing site.</p></div>
-        <div class="proj-block"><span class="lbl">My contribution</span><p>Contributed UI and cross-browser testing — verifying layout, responsiveness, and visual consistency across browsers and devices.</p></div>
-        <div class="stack"><span class="chip">Selenium</span><span class="chip">Cross-browser</span><span class="chip">UI testing</span></div>
-        <p class="proj-note">Client name available on request.</p>
+        <div class="proj-title">Web Accessibility Audit</div>
+        <div class="proj-role">Pepper Square · Accessibility tester (team-led engagement)</div>
+        <div class="proj-block"><span class="lbl">About</span><p>A WCAG 2.1 A/AA accessibility audit of a global pharmaceutical company's corporate website — roughly 20 page templates across home, content, and contact flows.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Ran screen-reader and keyboard testing (NVDA, JAWS, VoiceOver) alongside automated scans (axe-core, Lighthouse), executing ~30 manual test cases mapped to WCAG success criteria across browsers. Logged ~60 accessibility issues with severity, WCAG references, and reproduction steps, validated fixes with developers, and proposed integrating automated a11y checks into CI.</p></div>
+        <div class="stack"><span class="chip">WCAG 2.1 A/AA</span><span class="chip">axe-core</span><span class="chip">Lighthouse</span><span class="chip">NVDA</span><span class="chip">JAWS</span><span class="chip">VoiceOver</span><span class="chip">Cross-browser</span></div>
       </div>
 
       <div class="proj reveal" id="proj-sharp">
-        <div class="proj-title">COCORO OFFICE Shared Folder</div>
-        <div class="proj-role">Sharp · QA — cloud storage &amp; document-sharing service</div>
-        <div class="proj-block"><span class="lbl">About</span><p>Sharp's cloud storage and document-sharing service, with organization-wide shared folders, access control, and secure external file sharing.</p></div>
-        <div class="proj-block"><span class="lbl">My contribution</span><p>Manual functional testing of file-sharing workflows — upload, download, permission enforcement, and secure share links (password, download-count, expiry) — plus Java/Selenium web-portal automation inside an established enterprise framework.</p></div>
-        <div class="stack"><span class="chip">Java</span><span class="chip">Selenium</span><span class="chip">TestNG / JUnit</span><span class="chip">Manual testing</span></div>
+        <div class="proj-title">COCORO OFFICE</div>
+        <div class="proj-role">Sharp · Functional testing &amp; Selenium automation</div>
+        <div class="proj-block"><span class="lbl">About</span><p>Sharp's cloud business-IoT portal for managing multifunction printers and office devices, used by enterprise IT administrators — device registration, configuration, dashboards, and reporting.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Performed functional and exploratory testing across the admin portal, and built and maintained Selenium WebDriver automation (Java, TestNG, Maven, Page Object Model) for business-critical workflows with reusable synchronization and helper libraries. As part of a two-QA team, contributed to a suite of ~160–200 automated test cases (~85–90% of critical admin workflows) that reduced full regression from ~2 days to ~5–6 hours.</p></div>
+        <div class="stack"><span class="chip">Java</span><span class="chip">Selenium WebDriver</span><span class="chip">TestNG</span><span class="chip">Maven</span><span class="chip">POM</span><span class="chip">Jenkins</span><span class="chip">Extent Reports</span><span class="chip">Jira</span></div>
       </div>
 
       <div class="proj reveal">
-        <div class="proj-title">Sharpdesk Mobile</div>
-        <div class="proj-role">Sharp · QA — cross-platform mobile printing &amp; scanning app</div>
-        <div class="proj-block"><span class="lbl">About</span><p>A cross-platform app connecting smartphones and tablets to Sharp multifunction printers over wireless LAN, for mobile printing and scanning.</p></div>
-        <div class="proj-block"><span class="lbl">My contribution</span><p>Manual functional testing of print, scan, and file-sharing workflows across iOS and Android, and Java/Appium UI automation covering variation in devices, screen sizes, and OS versions.</p></div>
-        <div class="stack"><span class="chip">Java</span><span class="chip">Appium</span><span class="chip">iOS &amp; Android</span><span class="chip">Manual testing</span></div>
+        <div class="proj-title">Sharpdesk &amp; Sharpdesk Mobile</div>
+        <div class="proj-role">Sharp · Manual testing &amp; contributed automation — first commercial project</div>
+        <div class="proj-block"><span class="lbl">About</span><p>Sharp's Windows document-management desktop application and its companion iOS/Android apps — scanning, printing, document workflows, and printer connectivity.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Executed manual functional and regression testing across the desktop and mobile apps (~300–400 manual test cases across releases), and contributed Selenium automation (Java, Page Object Model) for stable workflows under senior-QA guidance, helping maintain ~60–80 automated regression scenarios. Logged and retested defects in Jira.</p></div>
+        <div class="stack"><span class="chip">Java</span><span class="chip">Selenium WebDriver</span><span class="chip">TestNG</span><span class="chip">Maven</span><span class="chip">POM</span><span class="chip">Jenkins</span><span class="chip">Jira</span><span class="chip">Windows desktop</span><span class="chip">Android/iOS</span></div>
       </div>
 
-      <div class="proj reveal">
-        <div class="proj-title">Sharpdesk Desktop</div>
-        <div class="proj-role">Sharp · QA — Windows document-management application</div>
-        <div class="proj-block"><span class="lbl">About</span><p>An integrated Windows desktop application for document and image management, including a bundled Network Scanner Tool and Composer components.</p></div>
-        <div class="proj-block"><span class="lbl">My contribution</span><p>Manual functional testing across document, scanning, OCR, and annotation workflows, and Java/Winium UI regression automation (a Selenium-style WebDriver tool for Windows desktop applications).</p></div>
-        <div class="stack"><span class="chip">Java</span><span class="chip">Winium</span><span class="chip">Desktop UI automation</span><span class="chip">Manual testing</span></div>
-      </div>
 
     </section>
   </main>
