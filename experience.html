@@ -232,7 +232,7 @@
     <!-- FEATURED -->
     <section class="sect" id="featured">
       <h2 class="sect-title reveal">Featured Work</h2>
-      <p class="sect-intro reveal">The work I'm most proud of — two independent builds and a research capstone.</p>
+      <p class="sect-intro reveal">The work I'm most proud of — three independent builds and a research capstone.</p>
 
       <div class="featured reveal">
         <span class="feat-tag">Independent Project</span>
@@ -251,6 +251,24 @@
           <span class="chip">Loki</span><span class="chip">OpenTelemetry</span><span class="chip">Docker</span>
         </div>
         <div class="links-row"><a href="https://github.com/Ak79p/meridian-perf-audit" target="_blank" rel="noopener">View on GitHub →</a></div>
+      </div>
+
+      <div class="featured reveal">
+        <span class="feat-tag">Independent Project</span>
+        <div class="feat-title">Payment Reliability Lab — Correctness Under Distributed Failure</div>
+        <div class="feat-role">Designer &amp; sole engineer · self-built testbed</div>
+        <p>A payment-correctness testbed that reproduces one of the most common distributed-systems failures — the customer is charged, but the application never records the payment. Instead of asserting HTTP responses, every test verifies the PostgreSQL ledger, where financial truth actually lives.</p>
+        <ul>
+          <li><strong>Deterministic fake gateway</strong> — a test double (not the system under test) that makes rare production failures repeatable: successful charges, idempotent charging, and intentionally lost confirmations (504), with inspection endpoints.</li>
+          <li><strong>Flagship dual-write scenario</strong> — the customer is charged, the API returns 504, and the order stays pending with no payment row; a reconciler then uses the durable idempotency key to query the gateway, writes the missing payment, and marks the order paid — with no second charge.</li>
+          <li><strong>Ledger-truth assertions</strong> — integration tests verify order state, payment rows, and charge count in PostgreSQL rather than trusting the API, covering idempotency and concurrent duplicate requests.</li>
+        </ul>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span>
+          <span class="chip">SQLAlchemy</span><span class="chip">pytest</span><span class="chip">httpx</span>
+          <span class="chip">Docker</span><span class="chip">Docker Compose</span>
+        </div>
+        <div class="links-row"><a href="https://github.com/Ak79p/payment-reliability-lab" target="_blank" rel="noopener">View on GitHub →</a></div>
       </div>
 
       <div class="featured reveal">
