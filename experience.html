@@ -185,46 +185,43 @@
       <p class="sect-intro reveal">The tools and practices I work with, grouped by where they sit in the testing lifecycle.</p>
 
       <div class="skill-group reveal">
+        <div class="skill-cat">Programming</div>
+        <div class="skill-row">
+          <span class="chip">Python (primary)</span><span class="chip">Java</span><span class="chip">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
         <div class="skill-cat">Test Automation</div>
         <div class="skill-row">
-          <span class="chip">Python</span><span class="chip">pytest</span><span class="chip">Playwright</span>
-          <span class="chip">Selenium WebDriver</span><span class="chip">Appium</span><span class="chip">Java</span>
-          <span class="chip">Page Object Model</span><span class="chip">Framework design</span>
+          <span class="chip">pytest</span><span class="chip">Playwright</span><span class="chip">Selenium WebDriver</span>
+          <span class="chip">Appium</span><span class="chip">Page Object Model</span>
         </div>
       </div>
       <div class="skill-group reveal">
         <div class="skill-cat">API Testing</div>
         <div class="skill-row">
-          <span class="chip">REST</span><span class="chip">GraphQL</span><span class="chip">REST Assured</span>
-          <span class="chip">httpx</span><span class="chip">requests</span><span class="chip">Postman</span><span class="chip">Schemathesis</span>
+          <span class="chip">REST APIs</span><span class="chip">requests</span><span class="chip">httpx</span>
+          <span class="chip">REST Assured</span><span class="chip">Postman</span>
         </div>
       </div>
       <div class="skill-group reveal">
-        <div class="skill-cat">Performance &amp; Observability</div>
+        <div class="skill-cat">Backend &amp; Databases</div>
+        <div class="skill-row">
+          <span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">SQLite</span>
+          <span class="chip">Database validation</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-cat">CI / CD &amp; Development Tools</div>
+        <div class="skill-row">
+          <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">GitHub Actions</span>
+          <span class="chip">Jenkins</span><span class="chip">Docker</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-cat">Performance Testing</div>
         <div class="skill-row">
           <span class="chip">k6</span><span class="chip">Load &amp; stress testing</span><span class="chip">SLO thresholds</span>
-          <span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">Tempo</span>
-          <span class="chip">Loki</span><span class="chip">OpenTelemetry</span><span class="chip">Distributed tracing</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-cat">CI / CD &amp; Infrastructure</div>
-        <div class="skill-row">
-          <span class="chip">GitHub Actions</span><span class="chip">Jenkins</span><span class="chip">Docker</span>
-          <span class="chip">Pipeline design</span><span class="chip">Quality gates</span><span class="chip">AWS (EC2, S3, IAM)</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-cat">Languages &amp; Data</div>
-        <div class="skill-row">
-          <span class="chip">Python</span><span class="chip">Java</span><span class="chip">SQL</span><span class="chip">Database validation</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-cat">Practices</div>
-        <div class="skill-row">
-          <span class="chip">Shift-left testing</span><span class="chip">Accessibility (WCAG)</span>
-          <span class="chip">Cross-browser</span><span class="chip">Cross-platform mobile</span><span class="chip">Agile delivery</span>
         </div>
       </div>
     </section>
@@ -232,46 +229,25 @@
     <!-- FEATURED -->
     <section class="sect" id="featured">
       <h2 class="sect-title reveal">Featured Work</h2>
-      <p class="sect-intro reveal">The work I'm most proud of — three independent builds and a research capstone.</p>
-
+      <p class="sect-intro reveal">The work I'm most proud of — three independent Python builds.</p>
       <div class="featured reveal">
         <span class="feat-tag">Independent Project</span>
-        <div class="feat-title">Meridian Performance Audit — Telemetry-Driven Performance Engineering</div>
-        <div class="feat-role">Designer &amp; sole engineer · self-built testbed</div>
-        <p>A self-built performance-engineering case study. &ldquo;Meridian Retail&rdquo; is a fictional Black Friday scenario and the bottlenecks were planted deliberately so I&rsquo;d have something genuine to diagnose — but the system, instrumentation, tests, and every measurement are real. I built a fully instrumented FastAPI + PostgreSQL order API, then ran an independent audit on it.</p>
+        <div class="feat-title">Flaky Test Detective — Measuring Flakiness Instead of Masking It</div>
+        <div class="feat-role">Designer &amp; sole engineer · pytest plugin</div>
+        <p>A pytest plugin that measures test reliability instead of hiding failures. Unlike retry plugins that immediately rerun failed tests to make builds pass, it preserves the original execution, reruns failures in isolated subprocesses, and classifies every test as PASS, BROKEN, or FLAKY.</p>
         <ul>
-          <li><strong>Full observability stack</strong> — metrics, distributed traces, and structured logs unified in Grafana (Prometheus, Tempo, Loki, OpenTelemetry), with dashboards built around RED and USE signals and log-to-trace correlation.</li>
-          <li><strong>Five-scenario k6 campaign</strong> — baseline, load, stress, spike, and soak against explicit SLOs, surfacing a hard throughput ceiling at ~74 req/s while CPU stayed under 30% — ruling out &ldquo;needs bigger hardware&rdquo; and pointing at a saturated shared resource.</li>
-          <li><strong>Diagnosis from three independent signals</strong> — pool-utilization gauges pinned at max, a Little&rsquo;s Law model predicting the ceiling to a rounding error (73.5 vs 74), and idle-in-transaction sessions revealing checkout holding a database connection across its payment call.</li>
-          <li><strong>Result</strong> — releasing the connection before the payment call lifted sustained throughput 63% (74 → 121 req/s) and dropped checkout errors from 46–66% to zero, on the same hardware — proven with before/after dashboards and written up as executive and technical reports.</li>
+          <li><strong>Deliberate rerun strategy</strong> — completes the full initial run first, then reruns only the failures in isolated pytest subprocesses, appending each attempt to a preserved execution history.</li>
+          <li><strong>Classification, not suppression</strong> — a failed test that later passes is FLAKY; one that never passes is BROKEN — so intermittent failures are surfaced explicitly rather than hidden by retries.</li>
+          <li><strong>CI-consumable output</strong> — a versioned JSON report with per-attempt history plus a console summary, designed to plug into pipelines; linted and type-checked (Ruff, mypy) with GitHub Actions CI.</li>
         </ul>
         <div class="stack">
-          <span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">k6</span>
-          <span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">Tempo</span>
-          <span class="chip">Loki</span><span class="chip">OpenTelemetry</span><span class="chip">Docker</span>
+          <span class="chip">Python</span><span class="chip">pytest plugin API</span><span class="chip">Subprocess isolation</span>
+          <span class="chip">Dataclasses</span><span class="chip">Ruff</span><span class="chip">mypy</span><span class="chip">GitHub Actions</span>
         </div>
-        <div class="links-row"><a href="https://github.com/Ak79p/meridian-perf-audit" target="_blank" rel="noopener">View on GitHub →</a></div>
+        <div class="links-row"><a href="https://github.com/Ak79p/flaky-test-detective" target="_blank" rel="noopener">View on GitHub →</a></div>
       </div>
 
-      <div class="featured reveal">
-        <span class="feat-tag">Independent Project</span>
-        <div class="feat-title">Payment Reliability Lab — Correctness Under Distributed Failure</div>
-        <div class="feat-role">Designer &amp; sole engineer · self-built testbed</div>
-        <p>A payment-correctness testbed that reproduces one of the most common distributed-systems failures — the customer is charged, but the application never records the payment. Instead of asserting HTTP responses, every test verifies the PostgreSQL ledger, where financial truth actually lives.</p>
-        <ul>
-          <li><strong>Deterministic fake gateway</strong> — a test double (not the system under test) that makes rare production failures repeatable: successful charges, idempotent charging, and intentionally lost confirmations (504), with inspection endpoints.</li>
-          <li><strong>Flagship dual-write scenario</strong> — the customer is charged, the API returns 504, and the order stays pending with no payment row; a reconciler then uses the durable idempotency key to query the gateway, writes the missing payment, and marks the order paid — with no second charge.</li>
-          <li><strong>Ledger-truth assertions</strong> — integration tests verify order state, payment rows, and charge count in PostgreSQL rather than trusting the API, covering idempotency and concurrent duplicate requests.</li>
-        </ul>
-        <div class="stack">
-          <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span>
-          <span class="chip">SQLAlchemy</span><span class="chip">pytest</span><span class="chip">httpx</span>
-          <span class="chip">Docker</span><span class="chip">Docker Compose</span>
-        </div>
-        <div class="links-row"><a href="https://github.com/Ak79p/payment-reliability-lab" target="_blank" rel="noopener">View on GitHub →</a></div>
-      </div>
-
-      <div class="featured reveal">
+<div class="featured reveal">
         <span class="feat-tag">Independent Project</span>
         <div class="feat-title">API Test Framework — Quality-Gated API Automation</div>
         <div class="feat-role">Designer &amp; sole engineer</div>
@@ -289,22 +265,24 @@
         <div class="links-row"><a href="https://github.com/Ak79p/api-test-framework" target="_blank" rel="noopener">View on GitHub →</a></div>
       </div>
 
-      <div class="featured reveal">
-        <span class="feat-tag">Capstone Research · M.S.</span>
-        <div class="feat-title">ASL-TRM — A Transformer Model for ASL Gesture Recognition</div>
-        <div class="feat-role">Data pipeline owner · model development contributor — 3-person team</div>
-        <p>A capstone research project building a lightweight Transformer-based system for American Sign Language gesture recognition. It processes ASL video, extracts spatial–temporal pose and motion features, and applies a custom compact architecture — TRM-Micro — to translate signed gestures into text.</p>
+<div class="featured reveal">
+        <span class="feat-tag">Independent Project</span>
+        <div class="feat-title">Payment Reliability Lab — Correctness Under Distributed Failure</div>
+        <div class="feat-role">Designer &amp; sole engineer · self-built testbed</div>
+        <p>A payment-correctness testbed that reproduces one of the most common distributed-systems failures — the customer is charged, but the application never records the payment. Instead of asserting HTTP responses, every test verifies the PostgreSQL ledger, where financial truth actually lives.</p>
         <ul>
-          <li><strong>Owned the end-to-end data pipeline</strong> — dataset preparation (WLASL, Microsoft ASL-Citizen), MediaPipe-based feature extraction, and data ingestion feeding the model for training and evaluation.</li>
-          <li><strong>Contributed to model development</strong> — assisted in building TRM-Micro, adapting recursive-reasoning principles from recent Transformer research to the spatio-temporal domain of sign language.</li>
-          <li><strong>Result</strong> — TRM-Micro v3 matched or exceeded the ST-GCN baseline on ASL-Citizen (Top-1: 61.46% vs 59.52%) at roughly one-fifth the parameter count (~622K vs ~3.1M).</li>
+          <li><strong>Deterministic fake gateway</strong> — a test double (not the system under test) that makes rare production failures repeatable: successful charges, idempotent charging, and intentionally lost confirmations (504), with inspection endpoints.</li>
+          <li><strong>Flagship dual-write scenario</strong> — the customer is charged, the API returns 504, and the order stays pending with no payment row; a reconciler then uses the durable idempotency key to query the gateway, writes the missing payment, and marks the order paid — with no second charge.</li>
+          <li><strong>Ledger-truth assertions</strong> — integration tests verify order state, payment rows, and charge count in PostgreSQL rather than trusting the API, covering idempotency and concurrent duplicate requests.</li>
         </ul>
         <div class="stack">
-          <span class="chip">Python</span><span class="chip">TensorFlow</span>
-          <span class="chip">Transformer architectures</span><span class="chip">MediaPipe Holistic</span><span class="chip">Streamlit</span>
+          <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span>
+          <span class="chip">SQLAlchemy</span><span class="chip">pytest</span><span class="chip">httpx</span>
+          <span class="chip">Docker</span><span class="chip">Docker Compose</span>
         </div>
-        <div class="links-row"><a href="https://github.com/Ak79p/asl_trm" target="_blank" rel="noopener">View on GitHub →</a></div>
+        <div class="links-row"><a href="https://github.com/Ak79p/payment-reliability-lab" target="_blank" rel="noopener">View on GitHub →</a></div>
       </div>
+
     </section>
 
     <!-- PROJECTS -->
@@ -317,7 +295,7 @@
         <div class="proj-title">Cross-Platform Fitness App</div>
         <div class="proj-role">Pepper Square · QA automation — mobile, API &amp; CMS</div>
         <div class="proj-block"><span class="lbl">About</span><p>A React Native app (iOS and Android) with a Node.js/NestJS API and a web CMS, for a US-based outdoor-fitness organization — workouts, progress tracking, nearby-location discovery, and an in-app checkout flow.</p></div>
-        <div class="proj-block"><span class="lbl">My contribution</span><p>Built and maintained Appium UI automation (Java, Page Object Model) for core mobile journeys, automated REST API validation (REST Assured) across 20+ endpoints, and added Selenium coverage of the admin CMS. Contributed reusable framework components — TestNG, Maven, parallel execution, retry, Extent Reports — wired into Jenkins. As part of a two-QA team, helped grow a regression suite of ~180–220 automated tests (~90% of business-critical workflows) and cut full regression from ~2 days to under 4 hours.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Expanded and maintained an existing Appium (Java) automation framework, adding automated coverage for onboarding, authentication, workouts, challenges, geolocation, and HealthKit / Google Fit sync across Android and iOS. Developed and maintained REST API tests (REST Assured) covering authentication, schema validation, and negative scenarios, contributed reusable test utilities, and supported the team's Jenkins CI pipeline — helping reduce full regression from around two days to under four hours.</p></div>
         <div class="stack"><span class="chip">Java</span><span class="chip">Appium</span><span class="chip">Selenium</span><span class="chip">REST Assured</span><span class="chip">TestNG</span><span class="chip">Maven</span><span class="chip">Jenkins</span><span class="chip">React Native</span></div>
       </div>
 
@@ -341,7 +319,7 @@
         <div class="proj-title">COCORO OFFICE</div>
         <div class="proj-role">Sharp · Functional testing &amp; Selenium automation</div>
         <div class="proj-block"><span class="lbl">About</span><p>Sharp's cloud business-IoT portal for managing multifunction printers and office devices, used by enterprise IT administrators — device registration, configuration, dashboards, and reporting.</p></div>
-        <div class="proj-block"><span class="lbl">My contribution</span><p>Performed functional and exploratory testing across the admin portal, and built and maintained Selenium WebDriver automation (Java, TestNG, Maven, Page Object Model) for business-critical workflows with reusable synchronization and helper libraries. As part of a two-QA team, contributed to a suite of ~160–200 automated test cases (~85–90% of critical admin workflows) that reduced full regression from ~2 days to ~5–6 hours.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Performed functional and exploratory testing across the admin portal — authentication, role-based access, device management, reporting — and expanded and maintained an existing Selenium (Java) automation suite, adding regression coverage for business-critical workflows and contributing reusable test utilities within the team's framework, helping improve regression efficiency as part of a collaborative QA team.</p></div>
         <div class="stack"><span class="chip">Java</span><span class="chip">Selenium WebDriver</span><span class="chip">TestNG</span><span class="chip">Maven</span><span class="chip">POM</span><span class="chip">Jenkins</span><span class="chip">Extent Reports</span><span class="chip">Jira</span></div>
       </div>
 
@@ -349,7 +327,7 @@
         <div class="proj-title">Sharpdesk &amp; Sharpdesk Mobile</div>
         <div class="proj-role">Sharp · Manual testing &amp; contributed automation — first commercial project</div>
         <div class="proj-block"><span class="lbl">About</span><p>Sharp's Windows document-management desktop application and its companion iOS/Android apps — scanning, printing, document workflows, and printer connectivity.</p></div>
-        <div class="proj-block"><span class="lbl">My contribution</span><p>Executed manual functional and regression testing across the desktop and mobile apps (~300–400 manual test cases across releases), and contributed Selenium automation (Java, Page Object Model) for stable workflows under senior-QA guidance, helping maintain ~60–80 automated regression scenarios. Logged and retested defects in Jira.</p></div>
+        <div class="proj-block"><span class="lbl">My contribution</span><p>Executed manual functional and regression testing across the desktop and mobile apps — document management, printer connectivity, synchronization, and end-user workflows — and contributed Selenium automation for stable workflows under senior-QA guidance while learning structured defect investigation. Logged and retested defects in Jira.</p></div>
         <div class="stack"><span class="chip">Java</span><span class="chip">Selenium WebDriver</span><span class="chip">TestNG</span><span class="chip">Maven</span><span class="chip">POM</span><span class="chip">Jenkins</span><span class="chip">Jira</span><span class="chip">Windows desktop</span><span class="chip">Android/iOS</span></div>
       </div>
 
